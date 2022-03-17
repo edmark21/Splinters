@@ -1,0 +1,2 @@
+# Splinters
+Splinterlands bot
