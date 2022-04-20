@@ -67,7 +67,7 @@
 
 ---
 
-### 📕 Latest Blog Posts
+### 📕 Pls Support me for more future Projects..
 
 <!-- BLOG-POST-LIST:START -->
 - [Getting Started with MongoDB &amp; Mongoose](https://dev.to/codestackr/getting-started-with-mongodb-mongoose-2h6a)
@@ -77,7 +77,7 @@
 - [Regular Expressions &lpar;RegEx&rpar; Crash Course](https://dev.to/codestackr/regular-expressions-regex-crash-course-248n)
 <!-- BLOG-POST-LIST:END -->
 
-➡️ [more blog posts...](https://codestackr.com)
+➡️ [edmark1]
 
 ---
 
