@@ -82,7 +82,7 @@
 ---
 
 <details>
-  <summary>:zap: Recent GitHub Activity</summary>
+  zap: Recent GitHub Activity</summary>
   
 
 
