@@ -1,13 +1,13 @@
 # Splinterlands Custom Team Bot👋 
 
-I'm Adrian from Australia, and I do content on Design and Development. I really enjoy learning languages and frameworks like React and React Native, as well as work in WordPress. I also enjoy wireframing, ui, ux, and design in general. 
+I'm Edmark from PH, and I do love to code. I really enjoy learning languages and frameworks.
 
 ## Skills and Experience
-* ⚛ React
-* 📱 React Native
+* ⚛ Python
+* 📱 Java
 * 💻 HTML, CSS, JS
 
-## Examples of Work
+
 
 ## Features
 
