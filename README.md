@@ -71,7 +71,7 @@
 
 <!-- BLOG-POST-LIST:START -->
 
-➡️ [edmark1]
+➡️ edmark1, thats my ingame username you can send me your support..
 
 ---
 
