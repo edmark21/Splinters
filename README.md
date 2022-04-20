@@ -7,9 +7,9 @@
 - 🔭 You Can Create Custom Team
 - 🌱 Fast Console UI
 - 👯 Auto Anti Enemy Team
-- 🥅 2022 Goals: Learn more about web3
-- ⚡ Fun fact: I love to draw and play guitar / drums
-- 😻 Check out the NFT collection I created: [CodeCats](https://opensea.io/collection/codecats?search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW)
+- 🥅 Stable api
+- ⚡ 100% Team winrate
+- 😻 Rating booster
 
 
 
