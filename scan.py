@@ -17,14 +17,16 @@ os.system('clear')
 
 logo2 = '''\033[1;33m
 
-__________________________________________________________
-  1) Fullname to Card Id => oshannus to C3-339-05PRLO52Z4  
-  2) Card Id to Fullname => C3-339-05PRLO52Z4 to oshannus
-  3) Id to Fullname      => 339 to oshannus
-  4) Lastname to Fullname=> oshannus to djin_oshannus
+[*********************************]
+     [1] Fullname to Card Id 
+     [2] Card Id to Fullname
+     [3] Id to Fullname
+         (440 to tarsa)
+     [4] Lastname to Id
+     [5] Convert to Json
 
-  5) Convert to Json
-
+     [6] Back <
+[*********************************]
 
 
 '''
@@ -82,7 +84,7 @@ def cards():
 def zp():
   dl = input("Do you want to doqnload the Team file? [y/n]: ")
   if dl == "y" or dl == "Y" or dl == "yes" or dl == "YES" or dl == "Yes":
-    download = "1l7EGq2tQ1gLBMg6oMXvry402Dxhu3fHj"
+    download = "1OhuMCDerie1_1_2wK7nJDiUmqntcZuU2"
     print("Downloading Please wait...")
     r = requests.get("https://drive.google.com/uc?id=" + download + "&export=download")
     z = zipfile.ZipFile(io.BytesIO(r.content))
@@ -106,7 +108,7 @@ def menu():
   print ("(6) Dragon")
   print ("\n(7) Download Team File")
   print ("(8) Delete Team File")
-  print ("(9) Check your all cards available")
+  print ("(9) Check cards")
   print ("--------------------------\n")
 
   option = input("\033[0m[>] Select Element: \033[0m")
@@ -151,25 +153,11 @@ def menu():
   
   
 
-  def scan2():
-    ruleset = input("Enter rulset: ")
-    if ruleset == "menu":
-      menu()
-    f = open(element+ruleset+'.txt')
-    c = 11
-    stdoutOrigin=sys.stdout 
-    sys.stdout = open(element+ruleset+".json", "w")
-    for i in f:
-      c +=1
-
-      print(c, i)
-
-
-    sys.stdout.close()
-    sys.stdout=stdoutOrigin   
-    scan2()
+  
+    
   
   def scan():
+    print("Please wait...")
     f = open('acc.txt')
     n = f.readlines()
     name = n[0]
@@ -188,16 +176,9 @@ def menu():
 
         old = name.replace(" ", "_").lower()
         
-        
-
-      
 
         new = i['uid']
-        
 
-      
-      
-      
 
         def ilisan():
           fp = element
@@ -223,44 +204,41 @@ def menu():
 
         ilisan()
 
-      
+  
         
       
       
       
         
   def scan2():
-    ruleset = input("Enter rulset: ")
-    if ruleset == "menu":
-      menu()
-    f = open(element+ruleset+'.txt')
-    c = 11
-    stdoutOrigin=sys.stdout 
-    sys.stdout = open(element+ruleset+".json", "w")
-    for i in f:
-      c +=1
+    
+    dir_list = os.listdir(element)
+    print("Please wait..")
+    7
+    for i in dir_list:
+      
+      f = open(element+i)
+      c = 11
+      stdoutOrigin=sys.stdout
+      a = i.replace(".txt", "")
+      sys.stdout = open(element+a+".json", "w")
+      os.system('rm -r ' + element+i)
+      for i in f:
+        c +=1
 
-      print(c, i)
+        print(c, i)
 
 
-    sys.stdout.close()
-    sys.stdout=stdoutOrigin   
-    scan2()
+      sys.stdout.close()
+      sys.stdout=stdoutOrigin   
   
   
-        
 
-      
-      
-      
-
-      
-
-        
       
     
 
   def reverse():
+    print("Please wait...")
 
 
     f = open('acc.txt')
@@ -283,12 +261,6 @@ def menu():
         old = i['uid']
 
         new = name.replace(" ", "_").lower()
-        
-        
-
-      
-      
-      
         
 
       
@@ -460,6 +432,11 @@ def menu():
 
     elif s == "5":
       scan2()
+      main()
+
+
+    elif s == "6":
+      menu()
       
       
 
