@@ -1,6 +1,8 @@
 # Splinterlands Custom Team Bot👋 
 
-I'm Edmark from PH, and I do love to code. I really enjoy learning languages and frameworks.
+#How to use?
+download via terminal:
+git clone https://github.com/edmark21/Splinters.git
 
 ## Skills and Experience
 * ⚛ Python
