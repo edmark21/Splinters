@@ -1,8 +1,19 @@
 # Splinterlands Custom Team Bot👋 
 
-#How to use?
-download via terminal:
-git clone https://github.com/edmark21/Splinters.git
+## Installation 
+
+#### Google cloud https://console.cloud.google.com/
+```bash
+git clone https://github.com/edmark21/autobot
+```
+
+```bash
+cd Splinters
+```
+
+```bash
+pip3 install -r install.txt
+```
 
 ## Skills and Experience
 * ⚛ Python
