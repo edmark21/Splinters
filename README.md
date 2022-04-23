@@ -15,6 +15,11 @@ cd Splinters
 pip3 install -r install.txt
 ```
 
+#### How to Run?
+```bash
+python3 main.py
+```
+
 ## Skills and Experience
 * ⚛ Python
 * 📱 Java
