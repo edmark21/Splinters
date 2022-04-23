@@ -4,7 +4,7 @@
 
 #### Google cloud https://console.cloud.google.com/
 ```bash
-git clone https://github.com/edmark21/autobot
+git clone https://github.com/edmark21/Splinters.git
 ```
 
 ```bash
