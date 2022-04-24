@@ -197,11 +197,18 @@ def main():
     
     
       balik += 1
+      
       if balik == 8:
+        
         print("[?] Reloading")
         time.sleep(2)
         main()
-
+        '''
+        r = 1
+        if r == 4:
+          print("The match is waiting,\n pls wait for the enemy to submit.")
+          time.sleep(60)
+        '''
       
 
       
@@ -337,7 +344,10 @@ def main():
         fn = open("team/fire/standard.json")
         setteamm = json.load(fn)
 
-
+      elif "Black" in aa:
+        fn = open("team/death/standard.json")
+        setteamm = json.load(fn)
+      
       elif "White" in aa:
         fn = open("team/life/standard.json")
         setteamm = json.load(fn)
@@ -346,9 +356,6 @@ def main():
         fn = open("team/dragon/standard.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/standard.json")
-        setteamm = json.load(fn)
 
 
         
@@ -356,48 +363,53 @@ def main():
       return setteamm  
 ##################[armored up]########################
     elif l['ruleset'] == "Armored Up":
-      if "Green" in aa:
-        fn = open("team/earth/standard.json")
+      if "Blue" in aa:
+        fn = open("team/water/armored_up.json")
         setteamm = json.load(fn)
       
-      elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+      elif "Green" in aa:
+        fn = open("team/earth/armored_up.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/armored_up.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/armored_up.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
-        fn = open("team/life/standard.json")
+        fn = open("team/life/armored_up.json")
         setteamm = json.load(fn)
 
       elif "Gold" in aa:
-        fn = open("team/dragon/standard.json")
+        fn = open("team/dragon/armored_up.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/standard.json")
-        setteamm = json.load(fn)
 
       
 
+      
       return setteamm  
 ###################[aim true]#######################
     elif l['ruleset'] == "Aim True":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/aim_true.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/aim_true.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/aim_true.json")
         setteamm = json.load(fn)
 
-
+      elif "Black" in aa:
+        fn = open("team/death/aim_true.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/aim_true.json")
         setteamm = json.load(fn)
@@ -406,9 +418,6 @@ def main():
         fn = open("team/dragon/aim_true.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/aim_true.json")
-        setteamm = json.load(fn)
 
       return setteamm  
 
@@ -426,7 +435,11 @@ def main():
       elif "Red" in aa:
         fn = open("team/fire/back_to_basics.json")
         setteamm = json.load(fn)
-
+        
+      elif "Black" in aa:
+        fn = open("team/death/back_to_basics.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/back_to_basics.json")
         setteamm = json.load(fn)
@@ -435,9 +448,6 @@ def main():
         fn = open("team/dragon/back_to_basics.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/back_to_basics.json")
-        setteamm = json.load(fn)
 
       return setteamm  
 
@@ -455,6 +465,10 @@ def main():
         fn = open("team/fire/broken_arrows.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/broken_arrows.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/broken_arrows.json")
         setteamm = json.load(fn)
@@ -463,9 +477,6 @@ def main():
         fn = open("team/dragon/broken_arrows.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/broken_arrows.json")
-        setteamm = json.load(fn)
 
       return setteamm        
 
@@ -473,17 +484,21 @@ def main():
 ###################[Close Range]####################
     elif l['ruleset'] == "Close Range":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/close_range.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/close_range.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/close_range.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/close_range.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/close_range.json")
         setteamm = json.load(fn)
@@ -492,84 +507,85 @@ def main():
         fn = open("team/dragon/close_range.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/close_range.json")
-        setteamm = json.load(fn)
 
       return setteamm         
 
 
 ###################[Earthquake]####################
     elif l['ruleset'] == "Earthquake":
-      if "Green" in aa:
-        fn = open("team/earth/earthquake.json")
+      if "Red" in aa:
+        fn = open("team/fire/earthquake.json")
         setteamm = json.load(fn)
-      
-      elif "Gold" in aa:
-        fn = open("team/dragon/earthquake.json")
+        
+      elif "Green" in aa:
+        fn = open("team/earth/earthquake.json")
         setteamm = json.load(fn)
 
       elif "Blue" in aa:
         fn = open("team/water/earthquake.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/earthquake.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/earthquake.json")
         setteamm = json.load(fn)
-
-      elif "Red" in aa:
-        fn = open("team/fire/earthquake.json")
-        setteamm = json.load(fn)
-
-      elif "Black" in aa:
-        fn = open("team/death/earthquake.json")
+      
+      elif "Gold" in aa:
+        fn = open("team/dragon/earthquake.json")
         setteamm = json.load(fn)
 
       return setteamm      
 
 
-###################[Equaliser]####################
-    elif l['ruleset'] == "Equaliser":
+###################[Equalizer]####################
+    elif l['ruleset'] == "Equalizer":
       if "Green" in aa:
-        fn = open("team/earth/equaliser.json")
+        fn = open("team/earth/equalizer.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/equaliser.json")
+        fn = open("team/water/equalizer.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
-        fn = open("team/fire/equaliser.json")
+        fn = open("team/fire/equalizer.json")
         setteamm = json.load(fn)
-
+      elif "Black" in aa:
+        fn = open("team/death/equalizer.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
-        fn = open("team/life/equaliser.json")
+        fn = open("team/life/equalizer.json")
         setteamm = json.load(fn)
 
       elif "Gold" in aa:
-        fn = open("team/dragon/equaliser.json")
+        fn = open("team/dragon/equalizer.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/equaliser.json")
-        setteamm = json.load(fn)
 
       return setteamm      
       
 ###################[Equal Opportunity]####################
     elif l['ruleset'] == "Equal Opportunity":
-      if "Green" in aa:
-        fn = open("team/earth/standard.json")
+      if "Blue" in aa:
+        fn = open("team/water/equal_opportunity.json")
         setteamm = json.load(fn)
       
-      elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+      elif "Green" in aa:
+        fn = open("team/earth/equal_opportunity.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/equal_opportunity.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/equal_opportunity.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/equal_opportunity.json")
         setteamm = json.load(fn)
@@ -578,9 +594,6 @@ def main():
         fn = open("team/dragon/equal_opportunity.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/equal_opportunity.json")
-        setteamm = json.load(fn)
 
       return setteamm      
 
@@ -599,6 +612,10 @@ def main():
         fn = open("team/fire/even_stevens.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/even_stevens.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/even_stevens.json")
         setteamm = json.load(fn)
@@ -607,27 +624,28 @@ def main():
         fn = open("team/dragon/even_stevens.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/even_stevens.json")
-        setteamm = json.load(fn)
 
       return setteamm          
 
 
 ###################[Explosive Weaponry]####################
     elif l['ruleset'] == "Explosive Weaponry":
-      if "Green" in aa:
-        fn = open("team/earth/standard.json")
+      if "Blue" in aa:
+        fn = open("team/water/explosive_weaponry.json")
         setteamm = json.load(fn)
       
-      elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+      elif "Green" in aa:
+        fn = open("team/earth/explosive_weaponry.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/explosive_weaponry.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/explosive_weaponry.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/explosive_weaponry.json")
         setteamm = json.load(fn)
@@ -636,9 +654,6 @@ def main():
         fn = open("team/dragon/explosive_weaponry.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/explosive_weaponry.json")
-        setteamm = json.load(fn)
 
       return setteamm    
 
@@ -656,6 +671,10 @@ def main():
         fn = open("team/fire/fog_of_war.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/fog_of_war.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/fog_of_war.json")
         setteamm = json.load(fn)
@@ -664,26 +683,27 @@ def main():
         fn = open("team/dragon/fog_of_war.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/fog_of_war.json")
-        setteamm = json.load(fn)
 
       return setteamm  
 
 ###################[Healed Out]####################
     elif l['ruleset'] == "Healed Out":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/healed_out.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/healed_out.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/healed_out.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/healed_out.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/healed_out.json")
         setteamm = json.load(fn)
@@ -692,9 +712,6 @@ def main():
         fn = open("team/dragon/healed_out.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/healed_out.json")
-        setteamm = json.load(fn)
 
       return setteamm   
 
@@ -704,17 +721,21 @@ def main():
 ###################[Heavy Hitters]####################
     elif l['ruleset'] == "Heavy Hitters":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/heavy_hitters.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/heavy_hitters.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/heavy_hitters.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/heavy_hitters.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/heavy_hitters.json")
         setteamm = json.load(fn)
@@ -723,9 +744,6 @@ def main():
         fn = open("team/dragon/heavy_hitters.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/heavy_hitters.json")
-        setteamm = json.load(fn)
 
       return setteamm   
 
@@ -733,17 +751,21 @@ def main():
 ###################[Holy Protection]####################
     elif l['ruleset'] == "Holy Protection":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/holy_protection.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/holy_protection.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/holy_protection.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/holy_protection.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/holy_protection.json")
         setteamm = json.load(fn)
@@ -752,9 +774,6 @@ def main():
         fn = open("team/dragon/holy_protection.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/holy_protection.json")
-        setteamm = json.load(fn)
 
       return setteamm   
     
@@ -773,6 +792,10 @@ def main():
         fn = open("team/fire/keep_your_distance.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/keep_your_distance.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/keep_your_distance.json")
         setteamm = json.load(fn)
@@ -781,9 +804,6 @@ def main():
         fn = open("team/dragon/keep_your_distance.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/keep_your_distance.json")
-        setteamm = json.load(fn)
 
       return setteamm   
     
@@ -803,6 +823,10 @@ def main():
         fn = open("team/fire/little_league.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/little_league.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/little_league.json")
         setteamm = json.load(fn)
@@ -811,9 +835,6 @@ def main():
         fn = open("team/dragon/little_league.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/little_league.json")
-        setteamm = json.load(fn)
 
       return setteamm   
 
@@ -831,6 +852,10 @@ def main():
         fn = open("team/fire/lost_legendaries.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/lost_legendaries.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/lost_legendaries.json")
         setteamm = json.load(fn)
@@ -839,9 +864,6 @@ def main():
         fn = open("team/dragon/lost_legendaries.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/lost_legendaries.json")
-        setteamm = json.load(fn)
 
       return setteamm         
 
@@ -859,6 +881,10 @@ def main():
         fn = open("team/fire/lost_magic.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/lost_magic.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/lost_magic.json")
         setteamm = json.load(fn)
@@ -867,9 +893,6 @@ def main():
         fn = open("team/dragon/lost_magic.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/lost_magic.json")
-        setteamm = json.load(fn)
 
       return setteamm      
 
@@ -888,6 +911,10 @@ def main():
         fn = open("team/fire/melee_mayhem.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/melee_mayhem.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/melee_mayhem.json")
         setteamm = json.load(fn)
@@ -896,26 +923,27 @@ def main():
         fn = open("team/dragon/melee_mayhem.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/melee_mayhem.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
 ###################[Noxious Fumes]####################
     elif l['ruleset'] == "Noxious Fumes":
-      if "Green" in aa:
-        fn = open("team/earth/standard.json")
+      if "Red" in aa:
+        fn = open("team/fire/noxious_fumes.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
         fn = open("team/water/noxious_fumes.json")
         setteamm = json.load(fn)
 
-      elif "Red" in aa:
-        fn = open("team/fire/noxious_fumes.json")
+      elif "Green" in aa:
+        fn = open("team/earth/noxious_fumes.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/noxious_fumes.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/noxious_fumes.json")
         setteamm = json.load(fn)
@@ -924,24 +952,25 @@ def main():
         fn = open("team/dragon/noxious_fumes.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/noxious_fumes.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
 ###################[Odd Ones Out]####################
     elif l['ruleset'] == "Odd Ones Out":
-      if "Green" in aa:
-        fn = open("team/earth/odd_ones_out.json")
+      if "Red" in aa:
+        fn = open("team/fire/odd_ones_out.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
         fn = open("team/water/odd_ones_out.json")
         setteamm = json.load(fn)
 
-      elif "Red" in aa:
-        fn = open("team/fire/odd_ones_out.json")
+      elif "Green" in aa:
+        fn = open("team/earth/odd_ones_out.json")
+        setteamm = json.load(fn)
+
+      elif "Black" in aa:
+        fn = open("team/death/odd_ones_out.json")
         setteamm = json.load(fn)
 
       elif "White" in aa:
@@ -952,25 +981,26 @@ def main():
         fn = open("team/dragon/odd_ones_out.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/odd_ones_out.json")
-        setteamm = json.load(fn)
 
       return setteamm      
 
 
 ###################[Reverse Speed]####################
     elif l['ruleset'] == "Reverse Speed":
-      if "Green" in aa:
-        fn = open("team/earth/reverse_speed.json")
+      if "Red" in aa:
+        fn = open("team/fire/reverse_speed.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
         fn = open("team/water/reverse_speed.json")
         setteamm = json.load(fn)
 
-      elif "Red" in aa:
-        fn = open("team/fire/reverse_speed.json")
+      elif "Green" in aa:
+        fn = open("team/earth/reverse_speed.json")
+        setteamm = json.load(fn)
+
+      elif "Black" in aa:
+        fn = open("team/death/reverse_speed.json")
         setteamm = json.load(fn)
 
       elif "White" in aa:
@@ -981,9 +1011,6 @@ def main():
         fn = open("team/dragon/reverse_speed.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/reverse_speed.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
@@ -1002,6 +1029,10 @@ def main():
         fn = open("team/fire/rise_of_the_commons.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/rise_of_the_commons.json")
+        setteamm = json.load(fn)
+
       elif "White" in aa:
         fn = open("team/life/rise_of_the_commons.json")
         setteamm = json.load(fn)
@@ -1010,9 +1041,6 @@ def main():
         fn = open("team/dragon/rise_of_the_commons.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/rise_of_the_commons.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
@@ -1023,12 +1051,16 @@ def main():
         fn = open("team/earth/silenced_summoners.json")
         setteamm = json.load(fn)
       
-      elif "Blue" in aa:
+      elif "Green" in aa:
         fn = open("team/water/silenced_summoners.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/silenced_summoners.json")
+        setteamm = json.load(fn)
+
+      elif "Black" in aa:
+        fn = open("team/death/silenced_summoners.json")
         setteamm = json.load(fn)
 
       elif "White" in aa:
@@ -1039,9 +1071,6 @@ def main():
         fn = open("team/dragon/silenced_summoners.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/silenced_summoners.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
@@ -1049,15 +1078,19 @@ def main():
 ###################[Spreading Fury]####################
     elif l['ruleset'] == "Spreading Fury":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/spreading_fury.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/spreading_fury.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/spreading_fury.json")
+        setteamm = json.load(fn)
+
+      elif "Black" in aa:
+        fn = open("team/death/spreading_fury.json")
         setteamm = json.load(fn)
 
       elif "White" in aa:
@@ -1068,9 +1101,6 @@ def main():
         fn = open("team/dragon/spreading_fury.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/spreading_fury.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
@@ -1078,17 +1108,21 @@ def main():
 ###################[Stampede]####################
     elif l['ruleset'] == "Stampede":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/stampede.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/stampede.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/stampede.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/stampede.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/stampede.json")
         setteamm = json.load(fn)
@@ -1097,27 +1131,28 @@ def main():
         fn = open("team/dragon/stampede.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/stampede.json")
-        setteamm = json.load(fn)
 
       return setteamm    
 
 
 ###################[Super Sneak]####################
     elif l['ruleset'] == "Super Sneak":
-      if "Green" in aa:
-        fn = open("team/earth/super_sneak.json")
+      if "Blue" in aa:
+        fn = open("team/water/super_sneak.json")
         setteamm = json.load(fn)
       
-      elif "Blue" in aa:
-        fn = open("team/water/super_sneak.json")
+      elif "Green" in aa:
+        fn = open("team/earth/super_sneak.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/super_sneak.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/super_sneak.json")
+        setteamm = json.load(fn)
+        
       elif "White" in aa:
         fn = open("team/life/super_sneak.json")
         setteamm = json.load(fn)
@@ -1126,9 +1161,6 @@ def main():
         fn = open("team/dragon/super_sneak.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/super_sneak.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
@@ -1147,6 +1179,10 @@ def main():
         fn = open("team/fire/taking_sides.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/taking_sides.json")
+        setteamm = json.load(fn)
+
       elif "White" in aa:
         fn = open("team/life/taking_sides.json")
         setteamm = json.load(fn)
@@ -1155,9 +1191,6 @@ def main():
         fn = open("team/dragon/taking_sides.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/taking_sides.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
@@ -1176,6 +1209,10 @@ def main():
         fn = open("team/fire/target_practice.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/target_practice.json")
+        setteamm = json.load(fn)
+
       elif "White" in aa:
         fn = open("team/life/target_practice.json")
         setteamm = json.load(fn)
@@ -1184,24 +1221,25 @@ def main():
         fn = open("team/dragon/target_practice.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/target_practice.json")
-        setteamm = json.load(fn)
 
       return setteamm     
 
 ###################[Unprotected]####################
     elif l['ruleset'] == "Unprotected":
-      if "Green" in aa:
-        fn = open("team/earth/standard.json")
+      if "Blue" in aa:
+        fn = open("team/water/unprotected.json")
         setteamm = json.load(fn)
       
-      elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+      elif "Green" in aa:
+        fn = open("team/earth/unprotected.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/unprotected.json")
+        setteamm = json.load(fn)
+
+      elif "Black" in aa:
+        fn = open("team/death/unprotected.json")
         setteamm = json.load(fn)
 
       elif "White" in aa:
@@ -1212,9 +1250,6 @@ def main():
         fn = open("team/dragon/unprotected.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/unprotected.json")
-        setteamm = json.load(fn)
 
       return setteamm           
 
@@ -1233,6 +1268,10 @@ def main():
         fn = open("team/fire/up_close_and_personal.json")
         setteamm = json.load(fn)
 
+      elif "Black" in aa:
+        fn = open("team/death/up_close_and_personal.json")
+        setteamm = json.load(fn)
+
       elif "White" in aa:
         fn = open("team/life/up_close_and_personal.json")
         setteamm = json.load(fn)
@@ -1241,24 +1280,25 @@ def main():
         fn = open("team/dragon/up_close_and_personal.json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
-        fn = open("team/death/up_close_and_personal.json")
-        setteamm = json.load(fn)
 
       return setteamm
 
 ###################[Weak Magic]####################
     elif l['ruleset'] == "Weak Magic":
       if "Green" in aa:
-        fn = open("team/earth/standard.json")
+        fn = open("team/earth/weak_magic.json")
         setteamm = json.load(fn)
       
       elif "Blue" in aa:
-        fn = open("team/water/standard.json")
+        fn = open("team/water/weak_magic.json")
         setteamm = json.load(fn)
 
       elif "Red" in aa:
         fn = open("team/fire/weak_magic.json")
+        setteamm = json.load(fn)
+
+      elif "Black" in aa:
+        fn = open("team/death/weak_magic.json")
         setteamm = json.load(fn)
 
       elif "White" in aa:
@@ -1268,11 +1308,6 @@ def main():
       elif "Gold" in aa:
         fn = open("team/dragon/weak_magic.json")
         setteamm = json.load(fn)
-
-      elif "Black" in aa:
-        fn = open("team/death/weak_magic.json")
-        setteamm = json.load(fn)
-
       
       
       return setteamm    
