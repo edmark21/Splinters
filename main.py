@@ -202,13 +202,9 @@ def main():
         
         print("[?] Reloading")
         time.sleep(2)
+        
+        
         main()
-        '''
-        r = 1
-        if r == 4:
-          print("The match is waiting,\n pls wait for the enemy to submit.")
-          time.sleep(60)
-        '''
       
 
       
@@ -1648,10 +1644,11 @@ def main():
       exit()
 
 
-  else:
+  elif str(l['mana_cap']) == "99":
     try:
       team = (setteam['99'])
       send()
+      
     except:
       print("cant submit team")
       exit()
