@@ -9,10 +9,10 @@ import os,sys, requests, json
 API2 = "https://api2.splinterlands.com"
 
 # your username 
-username = 'username'
+username = 'vin-aledo2k'
 
 #  your posting keyword and active keyword
-passwords = ['posting_key', 'active_key']
+passwords = ['5HyJh5WXd4saXkovVux5ueDDoF4rNo9Lf5ji6TaSmdgoZRpCPM8', '5JrXgdiENBhu743VqVTMi795q4GSJD33YGSQRLU3Ksu9ifdjM5f']
 
 hive = Hive(keys=passwords)
 
@@ -23,10 +23,11 @@ l = requests.get(url).json()
 
 
 
-ci = int(input("Enter card Id: "))
+
 
 
 def main():
+  ci = int(input("Enter card Id: "))
   class Card:
     market_id = ''
     uid = ''
@@ -65,12 +66,14 @@ def main():
 
 
   def rent_card(player: str, card_ids: list, days: int, currency: str):
-    data: dict = {"items": card_ids,
+    for i in l:
+      if i['id'] == ci:
+        data: dict = {"items": card_ids,
                   "currency": currency,
                   "days": days,
                   "app": "splinterlands/0.7.139"}
-    hive.custom_json("sm_market_rent", data, required_auths=[player], required_posting_auths=[])
-    print(player, 'rented', "Successfully")
+        hive.custom_json("sm_market_rent", data, required_auths=[player], required_posting_auths=[])
+        print(player, 'rented', i['name'], "Successfully.")
     
      
     
@@ -83,15 +86,16 @@ def main():
       if i['id'] == ci:
         
         cards_sorted = get_rent_cards_xp(i['id'], i['editions'], False, 1, 50)
+        
     
 
         for card_sorted in cards_sorted:
           if verify(card_sorted.market_id, card_sorted.uid, card_sorted.detail_id):
             rent_card(username, [card_sorted.market_id], 1, 'DEC')
-            exit()
+            main()
         print('no available cards')
   sulod()
-  main()
+  
     
   
   
@@ -102,10 +106,3 @@ def main():
 main()
 
 
-# alpha
-#7 cl
-#5 dice
-#4 untamed
-#3 reward
-#2 promo
-#1 beta
