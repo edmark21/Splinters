@@ -8,11 +8,31 @@ import os,sys, requests, json
 
 API2 = "https://api2.splinterlands.com"
 
-# your username 
-username = 'vin-aledo2k'
 
-#  your posting keyword and active keyword
-passwords = ['5HyJh5WXd4saXkovVux5ueDDoF4rNo9Lf5ji6TaSmdgoZRpCPM8', '5JrXgdiENBhu743VqVTMi795q4GSJD33YGSQRLU3Ksu9ifdjM5f']
+
+try:
+  f = open('acc.txt')
+  n = f.readlines()
+
+
+  name = n[0]
+
+  res = " " in name
+
+  mao = name.split()[0]
+  posting = name.split()[-1]
+  active = name.split()[-2]
+  
+  username = mao
+
+  #  your posting keyword and active keyword
+  passwords = [posting, active]
+
+except:
+  print("[!] Incorrect account...")
+  input("\n\n\n\n[?] Press Enter to continue.....")
+  sys.exit()  
+  
 
 hive = Hive(keys=passwords)
 
@@ -106,3 +126,10 @@ def main():
 main()
 
 
+# alpha
+#7 cl
+#5 dice
+#4 untamed
+#3 reward
+#2 promo
+#1 beta
