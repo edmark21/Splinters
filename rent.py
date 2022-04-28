@@ -8,14 +8,14 @@ import os,sys, requests, json, time
 c_l = open('cards.txt')
 API2 = "https://api2.splinterlands.com"
 
-logo = '''
+logo = '''\033[0;35m
 
 
-  =====================================
-  [ SPLINTERS AUTO RENT MULTIPLE CARDS]
-  [        Develop by: Edmark         ]
-  =====================================
-
+  ======================================
+  [ SPLINTERS AUTO RENT MULTIPLE CARDS ]
+  [        Develop by: Edmark          ]
+  ======================================
+\033[0;36m
         [1] Auto
         [2] Manual
 
@@ -122,8 +122,9 @@ def main():
 
 
 
-
+  count = 0
   for zaw in fi:
+    count += 1
     ci = int(zaw.strip())
     def rent_card(player: str, card_ids: list, days: int, currency: str):
       for i in l:
@@ -133,7 +134,7 @@ def main():
                   "days": days,
                   "app": "splinterlands/0.7.139"}
           hive.custom_json("sm_market_rent", data, required_auths=[player], required_posting_auths=[])
-          print(player, 'rented', i['name'], "Successfully.")
+          print("\033[1;33m", count, player, 'rented\033[1;36m', i['name'], "\033[1;32mSuccessfully.")
         
 
 
@@ -203,7 +204,7 @@ def main2():
                   "days": days,
                   "app": "splinterlands/0.7.139"}
         hive.custom_json("sm_market_rent", data, required_auths=[player], required_posting_auths=[])
-        print(player, 'rented', i['name'], "Successfully.")
+        print("\033[1;33m",player, 'rented\033[1;36m', i['name'], "\033[1;32mSuccessfully.")
     
      
     
@@ -230,7 +231,7 @@ def main2():
 def menu():
   os.system('clear')
   print(logo)
-  option = input("Select Option: ")
+  option = input("\033[0;32mSelect Option: \033[1;33m")
   if option == "1":
     main()
     input("\n\nRent Complete, Please Enter To Continue..")
