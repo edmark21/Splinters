@@ -31,7 +31,7 @@ python3 main.py
 
 - 🔭 You Can Create Custom Team
 - 🌱 Fast Console UI
-- 👯 Auto Anti Enemy Team
+- 👯 Auto Rent Cards
 - 🥅 Stable api
 - ⚡ 100% Team winrate
 - 😻 Rating booster
