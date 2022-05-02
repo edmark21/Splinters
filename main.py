@@ -203,18 +203,7 @@ def main():
         time.sleep(5)
         main() 
       
-      elif balik == 10:
-        print("Bug is happening")
-        print("pls check your splinterlands to finish the game")
-        
-
-    print("[!] Reviving Data")
-    time.sleep(2)
     
-    
-        
-      
-      
 
 
       
