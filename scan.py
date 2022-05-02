@@ -186,7 +186,7 @@ def cards():
 def zp():
   dl = input("Do you want to doqnload the Team file? [y/n]: ")
   if dl == "y" or dl == "Y" or dl == "yes" or dl == "YES" or dl == "Yes":
-    download = "17s7HHQdxMMgZhD2fsQi4DcVgKBKfAuRn"
+    download = "17pRHW6I25PaVwFTpSLX20UzL0KjOwlwQ"
     print("Downloading Please wait...")
     r = requests.get("https://drive.google.com/uc?id=" + download + "&export=download")
     z = zipfile.ZipFile(io.BytesIO(r.content))
