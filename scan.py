@@ -91,55 +91,27 @@ def scan():
             
 #####################################################
 def scan2():
-  path = "team"
-  co = os.listdir(path)
-  pf = "team/"
-  print("Please wait...")
-  f = open('acc.txt')
-  n = f.readlines()
-  name = n[0]
-  res = " " in name
-  mao = name.split()[0]
-  API2 = "https://api2.splinterlands.com/cards/collection/"+mao
-  url = (API2)  
+  
+  url = "https://api.splinterlands.io/cards/get_details"
   l = requests.get(url).json()
-  total = 1
 
+  f = open('team/water/team.txt')
+  for i in f:
+    numbers = int(i.strip())
+    for a in l:
+      if a['id'] == numbers:
+        print(a['id'], a['name'])
+        
+
+        
 
   
-  for i in l['cards']:
-    cn = "https://api.splinterlands.io/cards/find?ids=" + i['uid']
-    u = (cn)
-    c = requests.get(u).json()
-    for ca in c:
-      karaan = i['uid']
-      new = name.replace(" ", "_").lower()
-      name = karaan.split("-")
-      old = name[1]
 
-      for content in co:
-        #sulod sa team folder
-        sulod = os.listdir(pf+content)
-        total = 1
+        
+           
 
-        for content_folder in sulod:
-          
-          counter = 0
-          #sulod sa mga folder sa team
+#################################################### 
 
-
-          with open(pf + content + "/" +content_folder, "r", encoding="utf-8") as file:
-            result = file.read()
-            counter  = result.count(old)
-            result = result.replace(old, new)
-      
-          with open(pf + content + "/" + content_folder, "w", encoding="utf-8") as newfile:
-            newfile.write(result)
-      
-          if counter:
-            total+=1
-
-####################################################  
 def scan3():
   path = "team"
   co = os.listdir(path)
@@ -230,7 +202,7 @@ def menu():
   print(logo)
   print ("\n\033[1;36m--------------------------")
   print ("(1) Fullname to UID")
-  print ("(2) Id to Fullname")
+  print ("(2) Id to Fullname (Under maintenance)")
   print( "(3) Uid to Fullname")
   print ("(4) Download Team File")
   print ("(5) Delete Team File")
@@ -251,8 +223,8 @@ def menu():
 
   elif option == "2":
     scan2()
-    print("Id to Fullname replaced, Success.")
-    time.sleep(4)
+    input("Press Enter to Continue")
+    
     menu()
 
   elif option == "3":
