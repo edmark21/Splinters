@@ -16,29 +16,28 @@ import pytz
 import os.path
 from os import path
 
-os.system('clear')
+try:
+  os.system('clear')
+except:
+  os.system('cls')
 
 API2 = "https://api2.splinterlands.com"
 BASE_BATTLE = "https://battle.splinterlands.com"
 
 
+
+
 logo = '''\033[1;32m
 
-  ██████  ██▓███   ██▓     ██▓ ███▄    █ ▄▄▄█████▓▓█████  ██▀███    ██████ 
-▒██    ▒ ▓██░  ██▒▓██▒    ▓██▒ ██ ▀█   █ ▓  ██▒ ▓▒▓█   ▀ ▓██ ▒ ██▒▒██    ▒ 
-░ ▓██▄   ▓██░ ██▓▒▒██░    ▒██▒▓██  ▀█ ██▒▒ ▓██░ ▒░▒███   ▓██ ░▄█ ▒░ ▓██▄   
-  ▒   ██▒▒██▄█▓▒ ▒▒██░    ░██░▓██▒  ▐▌██▒░ ▓██▓ ░ ▒▓█  ▄ ▒██▀▀█▄    ▒   ██▒
-▒██████▒▒▒██▒ ░  ░░██████▒░██░▒██░   ▓██░  ▒██▒ ░ ░▒████▒░██▓ ▒██▒▒██████▒▒
-▒ ▒▓▒ ▒ ░▒▓▒░ ░  ░░ ▒░▓  ░░▓  ░ ▒░   ▒ ▒   ▒ ░░   ░░ ▒░ ░░ ▒▓ ░▒▓░▒ ▒▓▒ ▒ ░
-░ ░▒  ░ ░░▒ ░     ░ ░ ▒  ░ ▒ ░░ ░░   ░ ▒░    ░     ░ ░  ░  ░▒ ░ ▒░░ ░▒  ░ ░
-░  ░  ░  ░░         ░ ░    ▒ ░   ░   ░ ░   ░         ░     ░░   ░ ░  ░  ░  
-      ░               ░  ░ ░           ░             ░  ░   ░           ░  
-                                                                           
-
-                                                                  
-
-                        Developed by:
-                          [ WCWE ]
+███████╗██████╗ ██╗     ██╗███╗   ██╗████████╗███████╗██████╗ ███████╗
+██╔════╝██╔══██╗██║     ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗██╔════╝
+███████╗██████╔╝██║     ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝███████╗
+╚════██║██╔═══╝ ██║     ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗╚════██║
+███████║██║     ███████╗██║██║ ╚████║   ██║   ███████╗██║  ██║███████║
+╚══════╝╚═╝     ╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝
+                                                     
+                       [ Version 1 ]              
+               
 
 
 '''
@@ -174,42 +173,51 @@ def main():
   except:
     print("[!] Incorrect account...")
     input("\n\n\n\n[?] Press Enter to continue.....")
-    sys.exit()
+    main()
 
   
-  
+  dm = "https://api2.splinterlands.com/players/outstanding_match?username="+user
+
+
+  detect = requests.get(dm).json()
 
 
 
 
 
   
-  balik = 0
+  balik = 1
   reload = 1
   try:
-    
     while type(resp) == str or type(resp) == dict and not resp["opponent_player"]:
       resp = get_battle_status(transaction_id)
       print("\033[0;36m[*]" + "\033[1;37m Finding Match")
       time.sleep(2)
-    
-    
-    
-    
-    
       balik += 1
+      reload += 1
+
       
       if balik == 8:
-        print("[?] Reloading")
-        time.sleep(2)
-        main()
-      
-
-      
-
-      
-
         
+        print("[?] Reloading")
+        time.sleep(5)
+        main() 
+      
+      elif balik == 10:
+        print("Bug is happening")
+        print("pls check your splinterlands to finish the game")
+        
+
+    print("[!] Reviving Data")
+    time.sleep(2)
+    
+    
+        
+      
+      
+
+
+      
   except:
     print("[..] Refreshing")
     time.sleep(10)
@@ -245,7 +253,7 @@ def main():
     
     bat()
     print("[+] Team Submited", oras.strftime(' %Y:%m:%d %H:%M:%S [+]'))
-    time.sleep(2)
+    #time.sleep(2)
     r()
     time.sleep(3)
 
@@ -284,7 +292,7 @@ def main():
     try:
       print("\033[1;32m[?]"+"\033[0;36m Active Element\033[0;35m ", "["+listToStr+"]")
 
-      print("\033[1;35m[>] " + "\033[0;34m" + lx['player'] + "\033[1;37m vs \033[0;31m" + lx['opponent_player'] + " = " + "\033[0;32mManacap: " + str(lx['mana_cap']) + " => " + "Ruleset: " + lx['ruleset'])
+      print("\033[1;35m[>] " + "\033[0;34m" + lx['player'] + "\033[1;37m vs \033[0;31m" + lx['opponent_player'] + " = " + "\033[0;32mManacap: " + str(lx['mana_cap']) + " => " + "\n    Ruleset: " + lx['ruleset'])
       
     except:
       print("Something error is happening.")
@@ -22760,6 +22768,5 @@ def main():
 
 
     
-
-    
 main()
+    
