@@ -16,10 +16,10 @@ import pytz
 import os.path
 from os import path
 
-try:
-  os.system('clear')
-except:
+if os.name == 'nt':
   os.system('cls')
+else:
+  os.system('clear')
 
 API2 = "https://api2.splinterlands.com"
 BASE_BATTLE = "https://battle.splinterlands.com"
@@ -36,7 +36,7 @@ logo = '''\033[1;32m
 ███████║██║     ███████╗██║██║ ╚████║   ██║   ███████╗██║  ██║███████║
 ╚══════╝╚═╝     ╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝
                                                      
-                       [ Version 1 ]              
+                       [ Beta version ]              
                
 
 
