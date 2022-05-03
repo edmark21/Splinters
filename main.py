@@ -17,6 +17,7 @@ import os.path
 from os import path
 
 if os.name == 'nt':
+  os.system('mode con: cols=72 lines=30')
   os.system('cls')
 else:
   os.system('clear')
