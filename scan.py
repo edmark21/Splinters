@@ -88,7 +88,54 @@ def scan():
           if counter:
             total+=1
 
-            
+################################################
+def scanm():
+  path = "team"
+  co = os.listdir(path)
+  pf = "team/"
+  print("Please wait...")
+  f = open('acc.txt')
+  n = f.readlines()
+  name = n[0]
+  res = " " in name
+  mao = name.split()[0]
+  API2 = "https://api2.splinterlands.com/cards/collection/"+mao
+  url = (API2)  
+  l = requests.get(url).json()
+  total = 1
+
+
+  
+  for i in l['cards']:
+    cn = "https://api.splinterlands.io/cards/find?ids=" + i['uid']
+    u = (cn)
+    c = requests.get(u).json()
+    for ca in c:
+      name = ca['details']['name']
+      old = name.replace(" ", "_").lower()
+      new = i['uid']
+
+      for content in co:
+        #sulod sa team folder
+        sulod = os.listdir(pf+content)
+        total = 1
+
+        
+          
+        counter = 0
+          
+
+
+        with open(pf + content + "/" +content_folder, "r", encoding="utf-8") as file:
+            result = file.read()
+            counter  = result.count(old)
+            result = result.replace(old, new)
+      
+          with open(pf + content + "/" + content_folder, "w", encoding="utf-8") as newfile:
+            newfile.write(result)
+      
+          if counter:
+            total+=1            
 #####################################################
 def scan2():
   
