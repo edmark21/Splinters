@@ -131,10 +131,10 @@ def scanm():
             counter  = result.count(old)
             result = result.replace(old, new)
       
-          with open(pf + content + "/" + content_folder, "w", encoding="utf-8") as newfile:
+        with open(pf + content + "/" + content_folder, "w", encoding="utf-8") as newfile:
             newfile.write(result)
       
-          if counter:
+        if counter:
             total+=1            
 #####################################################
 def scan2():
