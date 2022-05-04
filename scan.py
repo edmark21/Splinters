@@ -173,19 +173,15 @@ def update():
 ########################################################        
 def manual():
   
-  url = "https://api.splinterlands.io/cards/get_details"
-  l = requests.get(url).json()
-
-  c = input("Enter card Id: ")
-  numbers = int(c)
+  c = int(input("Enter card Id: "))
+  
+  
   for i in l:
-    if i['id'] == numbers:
+    if i['id'] == c:
       name = i['name'].replace(" ", "_").lower()
       print(i['id'], name)
-      manual()
-    else:
-      print("Id not found")
-      break
+
+  manual()
            
 
 #################################################### 
