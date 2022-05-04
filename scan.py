@@ -13,7 +13,11 @@ import os, sys, time
 
 
 
-os.system('clear')
+if os.name == 'nt':
+  os.system('mode con: cols=44 lines=34')
+  os.system('cls')
+else:
+  os.system('clear')
 
 logo = '''
 
@@ -150,11 +154,38 @@ def scan2():
         print(a['id'], a['name'])
         
 
-        
+######################################################
+def update():
+  response = requests.get('https://raw.githubusercontent.com/edmark21/Splinters/main/main.py')
+  data = response.text
+
+  os.system('rm -r main.py')
+  # Creates a new file
+  with open('main.py', 'w') as fp:
+    pass
+    # To write data to new file uncomment
+    fp.write(data)
+    fp.close()
+  
 
   
 
-        
+########################################################        
+def manual():
+  
+  url = "https://api.splinterlands.io/cards/get_details"
+  l = requests.get(url).json()
+
+  c = input("Enter card Id: ")
+  numbers = int(c)
+  for i in l:
+    if i['id'] == numbers:
+      name = i['name'].replace(" ", "_").lower()
+      print(i['id'], name)
+      manual()
+    else:
+      print("Id not found")
+      break
            
 
 #################################################### 
@@ -249,12 +280,13 @@ def menu():
   print(logo)
   print ("\n\033[1;36m--------------------------")
   print ("(1) Fullname to UID")
-  print ("(2) Id to Fullname (Under maintenance)")
+  print ("(2) Id info")
   print( "(3) Uid to Fullname")
   print ("(4) Download Team File")
   print ("(5) Delete Team File")
   print ("(6) Check cards")
-  print ("(7) Exit")
+  print ("(7) Update")
+  print ("(8) Exit")
   print ("--------------------------\n")
 
   option = input("\033[0m[>] Select Element: \033[0m")
@@ -269,7 +301,7 @@ def menu():
       print("[!] Please Download Team File first.")
 
   elif option == "2":
-    scan2()
+    manual()
     input("Press Enter to Continue")
     
     menu()
@@ -294,6 +326,11 @@ def menu():
     menu()
 
   elif option == "7":
+    update()
+    input("\n\nUpdate Done...")
+    menu()  
+
+  elif option == "8":
     print("Thank you for using this Bot.")
     exit()
     
