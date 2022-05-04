@@ -11,7 +11,8 @@ import importlib.util, requests
 import requests, zipfile, io
 import os, sys, time
 
-
+url = "https://api.splinterlands.io/cards/get_details"
+l = requests.get(url).json()
 
 if os.name == 'nt':
   os.system('mode con: cols=44 lines=34')
