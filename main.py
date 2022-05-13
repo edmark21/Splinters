@@ -173,7 +173,6 @@ def main():
   
   except:
     print("[!] Incorrect account...")
-    input("\n\n\n\n[?] Press Enter to continue.....")
     main()
 
   
