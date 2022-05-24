@@ -20,26 +20,7 @@ pip3 install -r install.txt
 python3 main.py
 ```
 
-## Skills and Experience
-* ⚛ Python
-* 📱 Java
-* 💻 HTML, CSS, JS
 
-
-
-## Features
-
-- 🔭 You Can Create Custom Team
-- 🌱 Fast Console UI
-- 👯 Auto Rent Cards
-- 🥅 Stable api
-- ⚡ 100% Team winrate
-- 😻 Rating booster
-
-
-
-
----
 
 ### 📕 Pls Support me for more future Projects..
 
