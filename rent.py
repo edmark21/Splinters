@@ -138,7 +138,7 @@ def main():
 
     count = 0
     for zaw in fi:
-      
+      count += 1
       ci = int(zaw.strip())
       def rent_card(player: str, card_ids: list, days: int, currency: str):
         for i in l:
@@ -148,7 +148,6 @@ def main():
                   "days": days,
                   "app": "splinterlands/0.7.139"}
             hive.custom_json("sm_market_rent", data, required_auths=[player], required_posting_auths=[])
-            count += 1
             print(count, player, 'rented', i['name'], "Successfully.")
         
 
