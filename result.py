@@ -57,7 +57,7 @@ def r():
     l = json.load(balance)
 
     
-    total_dec = str(l[1]['balance'])
+    total_dec = str(l[2]['balance'])
 
     
 
