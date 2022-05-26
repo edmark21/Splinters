@@ -160,7 +160,7 @@ def main():
     request_result = requests.get(oras)
     soup = bs4.BeautifulSoup(request_result.text, "html.parser")
     temp = soup.find("div", class_='BNeawe').text  
-    print("\n[+] Team Submited Time:", temp, "[+]")
+    print("[+] Team Submited Time:", temp, "[+]")
 
     r()
     
@@ -184,7 +184,7 @@ def main():
 
   
     print("[+] Match Found")
-    time.sleep(1)
+
 
     a = ["Red", "White", "Blue", "Green", "Black", "Gold"]
 
@@ -197,9 +197,8 @@ def main():
     listToStr = ' '.join([str(elem) for elem in b])
   
     try:
-      print("[?] Active Element ", "["+listToStr+"]")
-
-      print("[>] " + lx['player'] + " vs " + lx['opponent_player'] + " = " + "Manacap: " + str(lx['mana_cap']) + " => " + "\n    Ruleset: " + lx['ruleset'])
+      print("[?]", "["+listToStr+"]")
+      print("[>] " + lx['player'] + " vs " + lx['opponent_player'] + "\n" + "[>] Manacap: " + str(lx['mana_cap']) + "\n[>] Ruleset: " + lx['ruleset'] + "\n")
       
     except:
       print("Something error is happening.")
