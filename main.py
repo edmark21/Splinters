@@ -1,8 +1,9 @@
 '''
 version 1 release
-3:16 PM 5/24/2022
+1:29 PM 5/26/2022
 
 '''
+
 
 
 import hashlib
@@ -21,6 +22,7 @@ from result import *
 
 import os.path
 from os import path
+
 
 
 os.system('clear')
@@ -264,7 +266,7 @@ def main():
     request_result = requests.get(oras)
     soup = bs4.BeautifulSoup(request_result.text, "html.parser")
     temp = soup.find("div", class_='BNeawe').text  
-    print("\n[+] Team Submited Time:", temp, "[+]")
+    print("[+] Team Submited Time:", temp, "[+]")
     
     r()
     main()
@@ -298,9 +300,9 @@ def main():
     listToStr = ' '.join([str(elem) for elem in b])
   
     try:
-      print("[?] Active Element ", "["+listToStr+"]")
+      print("[?]", "["+listToStr+"]")
 
-      print("[>] " + lx['player'] + " vs " + lx['opponent_player'] + " = " + "Manacap: " + str(lx['mana_cap']) + " => " + "\n    Ruleset: " + lx['ruleset'] + "\n")
+      print("[>] " + lx['player'] + " vs " + lx['opponent_player'] + "\n" + "[>] Manacap: " + str(lx['mana_cap']) + "\n[>] Ruleset: " + lx['ruleset'] + "\n")
       
     except:
       print("Something error is happening.")
