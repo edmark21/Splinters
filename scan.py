@@ -3,7 +3,7 @@ scan
 
 
 update time
-3:05 PM 5/24/2022
+1:53 PM 5/26/2022
 '''
 
 import os, sys
@@ -23,7 +23,7 @@ import zipfile
 
 
 if os.name == 'nt':
-  os.system('mode con: cols=53 lines=30')
+  
   os.system('clear')
 else:
   os.system('clear')
@@ -138,7 +138,88 @@ def manual():
            
 
 #################################################### 
+def checker():
+  try:
+    f = open('core/acc.txt')
+    n = f.readlines()
 
+
+    name = n[0]
+
+    res = " " in name
+
+    mao = name.split()[0]
+    username = mao
+  
+    url = "https://api2.splinterlands.com/cards/collection/"+mao
+    response = requests.get(url)
+    a = response.text
+
+    f = open('core/cards_collection.json','w')
+
+    f.write(a)
+    f.close()
+  except:
+    print("[!] Please login first in core/acc.txt")  
+
+
+  al = open('core/allcards.json')
+  ali = json.load(al)
+
+  f = open('core/cards.txt')
+  cards = f.readlines()
+
+  mycards = open('core/cards_collection.json')
+  mc = json.load(mycards)
+
+
+
+
+  ca = []
+
+  for i in cards:
+    a = int(i.strip())
+    b = ca.append(a)
+
+
+
+
+  csl = []
+  for i in mc['cards']:
+    c = i['card_detail_id']
+    a = csl.append(c)
+    
+
+
+
+
+  bb = [ x for x in ca if not x in csl ]
+  listToStr = ' '.join([str(elem) for elem in bb])
+
+
+
+
+  l = '''\n
+  +---------------------------------+
+  |   You Dont have this cards yet  |
+  +---------------------------------+
+
+  '''
+  print(l)
+  for i in bb:
+    for h in ali:
+      if h['id'] == i:
+        name = h['name'].replace(" ", "_").lower()
+        print(h['id'], name, h['name'])
+
+
+
+    
+  input("\n\nPress Enter to exit...")
+
+            
+    
+#####################################################
 def scan3():
   path = "team"
   co = os.listdir(path)
@@ -231,8 +312,9 @@ def menu():
   [2] Id info
   [3] Check cards
   [4] Apply RB
-  [5] Extract team.zip
-  [6] Exit
+  [5] Check if Cards rented
+  [6] Extract team.zip
+  [7] Exit
 -------------------------------------------\n
 
   '''
@@ -274,10 +356,12 @@ def menu():
     time.sleep(3)
     menu()
 
-
+  elif option == "5":
+    checker()
+    menu()
   
 
-  elif option == "5":
+  elif option == "6":
     try:
       with zipfile.ZipFile("team.zip","r") as zip_ref:
         zip_ref.extractall()
