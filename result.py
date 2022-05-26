@@ -54,84 +54,105 @@ def r():
     bh = bts['battles']
 
     balance = open('core/balances.json')
-    l = json.load(balance)
+    bl = json.load(balance)
+
+    earn_dec = str(bh[0]['reward_dec'])
 
     
-    total_dec = str(l[2]['balance'])
+   
+    if bl[1]['token'] == "DEC":
+      total_dec = str(bl[1]['balance'])
+      
+    elif bl[2]['token'] == "DEC":
+      total_dec = str(bl[2]['balance'])
+      
+    elif bl[3]['token'] == "DEC":
+      total_dec = str(bl[3]['balance'])
 
+
+    def ranks():
+      ranku = "https://api.splinterlands.io/players/details?name="+user
+
+
+      ra = (ranku)
+      usr = requests.get(ra).json()
+
+
+      if usr['league'] == 0:
+        print("[+] Rank: novice =>", temp)
+
+      elif usr['league'] == 1:
+        print("[+] Rank: Bronze 3 =>", temp)
+
+      elif usr['league'] == 2:
+        print("[+] Rank: Bronze 2 =>", temp)
+
+      elif usr['league'] == 3:
+        print("[+] Rank: Bronze 1 =>", temp)
+
+      elif usr['league'] == 4:
+        print("[+] Rank: Silver 3 =>", temp)
+
+      elif usr['league'] == 5:
+        print("[+] Rank: Silver 2 =>", temp)
+
+      elif usr['league'] == 6:
+        print("[+] Rank: Silver 1 =>", temp)
+
+      elif usr['league'] == 7:
+        print("[+] Rank: Gold 3 =>", temp)
+
+      elif usr['league'] == 8:
+        print("[+] Rank: Gold 2 =>", temp)
+
+      elif usr['league'] == 9:
+        print("[+] Rank: Gold 1 =>", temp)
+
+      elif usr['league'] > 10:
+        print("[+] Rank: Diamond above =>", temp)
     
 
 
 
     
     if mao == bh[0]['player_1']:
-      earn_dec = str(bh[0]['reward_dec'])
+      
       if mao == bh[0]['winner']:
-        print("[+] Winner:", bh[0]['winner'], "Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
-        print("[*] Time: ", temp)
+        print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
+        ranks()
+        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
+        
         
        
       else:
-        earn_dec = "0"
-        print("[x] You Lose", "Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
-        print("[*] Time: ", temp)
+        
+        print("[x] You Lose")
+        ranks()
+        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
+        
         
       
           
 
     else:
       if mao == bh[0]['player_2']:
-        earn_dec = str(bh[0]['reward_dec'])
+        
         if mao == bh[0]['winner']:
-          print("[+] Winner:", bh[0]['winner'], "Rating:", bh[0]['player_2_rating_final'], "ECR:", ee)
-          print("[*] Time: ", temp)
+          print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
+          ranks()
+          print("[+] Rating:", bh[0]['player_2_rating_final'], "ECR:", ee)
+          
           
         
              
-      else:
-        earn_dec = "0"
-        print("[x] You Lose", "Rating:", bh[0]['player_2_rating_final'], "ECR:", ee)
-        print("[*] Time: ", temp)
+        else:
+          
+          print("[x] You Lose", "Rating:")
+          ranks()
+          print("[+] Rating", bh[0]['player_2_rating_final'], "ECR:", ee)
+          
 
-    ranku = "https://api.splinterlands.io/players/details?name="+user
-
-
-    ra = (ranku)
-    usr = requests.get(ra).json()
-
-
-    if usr['league'] == 0:
-      print("[+] Rank: novice", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 1:
-      print("[+] Rank: Bronze 3", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 2:
-      print("[+] Rank: Bronze 2", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 3:
-      print("[+] Rank: Bronze 1", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 4:
-      print("[+] Rank: Silver 3", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 5:
-      print("[+] Rank: Silver 2", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 6:
-      print("[+] Rank: Silver 1", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 7:
-      print("[+] Rank: Gold 3", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 8:
-      print("[+] Rank: Gold 2", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] == 9:
-      print("[+] Rank: Gold 1", "DEC:", "+" + earn_dec + "/" + total_dec)
-
-    elif usr['league'] > 10:
-      print("[+] Rank: Diamond above", "DEC:", "+" + earn_dec + "/" + total_dec)
+    
 
 
     
