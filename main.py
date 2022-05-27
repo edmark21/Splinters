@@ -22499,9 +22499,9 @@ def main():
       
 ####################################################   
       
-  if str(l['mana_cap']) == str(l['mana_cap']:
+  if str(l['mana_cap']) == str(l['mana_cap']):
     try:
-      team = (setteam[str(l['mana_cap']]))
+      team = (setteam[str(l['mana_cap'])])
       send()
     except:
       print("cant submit team")
@@ -22509,7 +22509,7 @@ def main():
       time.sleep(1)
       os.system("python3 dm.py")
       main()
-
+   
 
 
   
