@@ -267,8 +267,10 @@ def main():
     soup = bs4.BeautifulSoup(request_result.text, "html.parser")
     temp = soup.find("div", class_='BNeawe').text  
     print("[+] Team Submited Time:", temp, "[+]")
-    
-    r()
+    try:
+        r()
+    except:
+        print("[!] Battle result is Down.")
     main()
 
 
