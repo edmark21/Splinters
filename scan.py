@@ -24,16 +24,6 @@ import zipfile
 
 os.system("clear")
 
-check = path.exists('team')
-
-if check == True:
-  print()
-else:
-  print("[!] Pls download team folder first")
-  input("\nPress enter to exit..")
-  exit()
-
-
 
 
 
