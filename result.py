@@ -25,7 +25,6 @@ def r():
 
   mao = name.split()[0]
   mao2 = name.split()[1]
-  rating_limit = name.split()[5]
 
   user = mao
 
@@ -122,9 +121,8 @@ def r():
         print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
         ranks()
         print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
-        if int(bh[0]) > int(rating_limit):
-          input("[+] Rating Limit Detected")
-          exit()
+        
+        
         
         
         
@@ -146,16 +144,14 @@ def r():
           print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
           ranks()
           print("[+] Rating:", bh[0]['player_2_rating_final'], "ECR:", ee)
-          if int(bh[0]) > int(rating_limit):
-            input("[+] Rating Limit Detected")
-            exit()
+          
           
           
         
              
         else:
           
-          print("[x] You Lose")
+          print("[x] You Lose", "Rating:")
           ranks()
           print("[+] Rating", bh[0]['player_2_rating_final'], "ECR:", ee)
           
