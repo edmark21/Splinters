@@ -3,7 +3,7 @@ scan
 
 
 update time
-7:01 PM 6/5/2022
+7:07 PM 6/5/2022
 '''
 
 import os, sys
@@ -246,7 +246,7 @@ def scan3():
 
 ###################################################            
 def cards():
-  os.system('cls')
+  os.system('clear')
   f = open('core/acc.txt')
   n = f.readlines()
   name = n[0]
@@ -322,7 +322,7 @@ def menu():
     menu()
 
   elif option == "2":
-    os.system('cls')
+    os.system('clear')
     manual()
     input("Press Enter to Continue")
     
