@@ -344,7 +344,7 @@ def menu():
     f.write(a.strip())
     f.close()
 
-    print("Rating booster apply success...")
+    print("[+] Rating booster apply success...")
     time.sleep(3)
     menu()
 
