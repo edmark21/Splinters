@@ -3,7 +3,7 @@ scan
 
 
 update time
-1:53 PM 5/26/2022
+7:01 PM 6/5/2022
 '''
 
 import os, sys
@@ -22,11 +22,7 @@ import zipfile
 
 
 
-if os.name == 'nt':
-  
-  os.system('clear')
-else:
-  os.system('clear')
+os.system("clear")
 
 
 
@@ -56,18 +52,7 @@ try:
 except:
   print("[!] Please login first in core/acc.txt")  
 
-logo = '''
 
-
-  ======================================
-  [         SPLINTERS AUTO SCAN        ]
-  [          Develop by: Edmark        ]
-  [                                    ]
-  ======================================
-
-            Welcome: ''' + username + '''
-
-'''
 
 
 
@@ -82,7 +67,7 @@ def scan():
   path = "team"
   co = os.listdir(path)
   pf = "team/"
-  print("Please wait...")
+  print("[+] Please wait...")
   allc = open('core/cards_collection.json')
   l = json.load(allc)
   total = 1
@@ -114,9 +99,6 @@ def scan():
 
             with open(pf + content + "/" + content_folder, "w", encoding="utf-8") as newfile:
               newfile.write(result)
-
-            if counter:
-              total+=1
 
   print("\n[+] Fullname to Uid replaced, Success.")
   
@@ -198,24 +180,19 @@ def checker():
 
 
 
-
-  l = '''\n
-  +---------------------------------+
-  |   You Dont have this cards yet  |
-  +---------------------------------+
-
-  '''
-  print(l)
   for i in bb:
     for h in ali:
       if h['id'] == i:
         name = h['name'].replace(" ", "_").lower()
         print(h['id'], name, h['name'])
 
-
-
-    
-  input("\n\nPress Enter to exit...")
+  try:
+    if h['id']:
+      print("[!] Not all cards rented")
+  except:
+    print("[+] All cards rented")
+    scan()
+  
 
             
     
@@ -269,7 +246,7 @@ def scan3():
 
 ###################################################            
 def cards():
-  os.system('clear')
+  os.system('cls')
   f = open('core/acc.txt')
   n = f.readlines()
   name = n[0]
@@ -305,6 +282,21 @@ def zp():
 
 def menu():
   os.system('clear')
+  logo = '''
+
+
+  ======================================
+  [         SPLINTERS AUTO SCAN        ]
+  [          Develop by: Edmark        ]
+  [                                    ]
+  ======================================
+
+            Welcome: ''' + username + '''
+
+'''
+  print(logo)
+  
+  checker()
 
   lo = '''
 \n-----------------------------------------
@@ -318,7 +310,7 @@ def menu():
 -------------------------------------------\n
 
   '''
-  print(logo)
+  
   print(lo)
   
 
@@ -330,7 +322,7 @@ def menu():
     menu()
 
   elif option == "2":
-    os.system('clear')
+    os.system('cls')
     manual()
     input("Press Enter to Continue")
     
