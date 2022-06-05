@@ -188,11 +188,11 @@ def main():
 
   
   balik = 1
+  print("[*] Finding Match")
   
   try:
     while type(resp) == str or type(resp) == dict and not resp["opponent_player"]:
       resp = get_battle_status(transaction_id)
-      print("[*] Finding Match")
       time.sleep(2)
       balik += 1
 
