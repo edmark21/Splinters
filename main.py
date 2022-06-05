@@ -1,6 +1,6 @@
 '''
 version 1 release
-1:29 PM 5/26/2022
+8:37 PM 6/5/2022
 
 '''
 
@@ -31,7 +31,16 @@ os.system('clear')
 API2 = "https://api2.splinterlands.com"
 BASE_BATTLE = "https://battle.splinterlands.com"
 
+f = open('core/acc.txt')
+n = f.readlines()
 
+
+name = n[0]
+
+res = " " in name
+
+uname = name.split()[0]
+rating_nako = name.split()[5]
 
 
 
@@ -52,8 +61,15 @@ else:
 
 
 def main():
+  
+  url_r = "https://api.splinterlands.io/players/details?name="+uname
+  uri = requests.get(url_r).json()
 
+  m_rating = uri['rating']
 
+  if int(m_rating) > int(rating_nako):
+    input("[+] Rating limit detected.")
+    exit()
 
   
   def broadcast_find_match(hive: Hive, user: str, match_type: str, on_chain: bool):
@@ -158,10 +174,13 @@ def main():
 
     mao = name.split()[0]
     mao2 = name.split()[1]
+    
  
 
     user = mao
     hive = Hive(keys=[mao2])
+
+    
 
     
     transaction_id = broadcast_find_match(hive, user, "Ranked", False)
@@ -177,7 +196,8 @@ def main():
     main()
 
   
-
+  
+  
 
 
   
