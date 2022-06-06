@@ -1,6 +1,6 @@
 '''
 version 1 release
-8:37 PM 6/5/2022
+2:17 PM 6/6/2022
 
 '''
 
@@ -40,6 +40,7 @@ name = n[0]
 res = " " in name
 
 uname = name.split()[0]
+ecr_nako = name.split()[4]
 rating_nako = name.split()[5]
 
 
@@ -61,15 +62,33 @@ else:
 
 
 def main():
-  
+  #####rating
   url_r = "https://api.splinterlands.io/players/details?name="+uname
   uri = requests.get(url_r).json()
-
   m_rating = uri['rating']
+
+  ######ecr
+  url_e = "https://api.splinterlands.io/players/balances?username="+uname
+  result_e = requests.get(url_e).json()
+
 
   if int(m_rating) > int(rating_nako):
     input("[+] Rating limit detected.")
     exit()
+
+  for i in result_e:
+    if i['token'] == "ECR":
+      print("\n[+]", i['token'], i['balance'])
+      ecr = str(i['balance'])
+      pila = len(ecr)
+      if pila == 4:
+        ecr_int = int(ecr[0]+ecr[1])
+        if ecr_int < int(ecr_nako):
+          print("[+] ECR Limit Detected")
+          exit()
+
+        elif pila == 3:
+          print(ecr[0]+"%")
 
   
   def broadcast_find_match(hive: Hive, user: str, match_type: str, on_chain: bool):
