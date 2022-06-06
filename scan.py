@@ -3,7 +3,7 @@ scan
 
 
 update time
-7:07 PM 6/5/2022
+12:05 PM 6/6/2022
 '''
 
 import os, sys
@@ -23,6 +23,8 @@ import zipfile
 
 
 os.system("clear")
+
+
 
 
 
@@ -190,6 +192,7 @@ def checker():
   except:
     print("[+] All cards rented")
     scan()
+    os.system("python3 main.py")
   
 
             
@@ -342,7 +345,7 @@ def menu():
     f.write(a.strip())
     f.close()
 
-    print("[+] Rating booster apply success...")
+    print("Rating booster apply success...")
     time.sleep(3)
     menu()
 
