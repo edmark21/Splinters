@@ -16,7 +16,6 @@ import time
 from secrets import choice
 from typing import List
 import os, sys
-import requests
 from beem import Hive
 from result import *
 
@@ -26,25 +25,6 @@ from os import path
 
 
 os.system('clear')
-
-
-API2 = "https://api2.splinterlands.com"
-BASE_BATTLE = "https://battle.splinterlands.com"
-
-f = open('core/acc.txt')
-n = f.readlines()
-
-
-name = n[0]
-
-res = " " in name
-
-uname = name.split()[0]
-ecr_nako = name.split()[4]
-rating_nako = name.split()[5]
-
-
-
 
 
 check = path.exists('team')
@@ -57,10 +37,22 @@ else:
   exit()
   
 
+API2 = "https://api2.splinterlands.com"
+BASE_BATTLE = "https://battle.splinterlands.com"
 
+f = open('core/acc.txt')
+n = f.readlines()
+
+
+name = n[0]
+
+uname = name.split()[0]
+ecr_nako = name.split()[4]
+rating_nako = name.split()[5]
 
 def main():
   def r_e():
+    
     #####rating
     url_r = "https://api.splinterlands.io/players/details?name="+uname
     uri = requests.get(url_r).json()
@@ -81,13 +73,13 @@ def main():
         pila = len(ecr)
         if pila == 4:
           ecr_int = int(ecr[0]+ecr[1])
-          print("\n[+]", ecr_int + "%")
+          print("\n[+] " + str(ecr_int) + "% ECR")
           if ecr_int < int(ecr_nako):
             print("[+] ECR Limit Detected")
             exit()
 
         elif pila == 3:
-          print(ecr[0]+"%")
+          print("[+] " + str(ecr[0])+"% ECR")
 
   r_e()
 
@@ -293,7 +285,6 @@ def main():
 
 
   def bat():
-
     print("\n[+] Match Found")
     a = ["Red", "White", "Blue", "Green", "Black", "Gold"]
     b = resp['inactive'].split(',')
@@ -305,52 +296,58 @@ def main():
 
 
 
-
+  a = ["Red", "White", "Blue", "Green", "Black", "Gold"]
+  b = resp['inactive'].split(',')
+  b = [ x for x in a if not x in b ] 
+  listToStr = ' '.join([str(elem) for elem in b])
 ################[single]############
 #################[all rules]##########################      
 
   def rule():
     if resp['ruleset'] == resp['ruleset']:
       change = resp['ruleset'].replace("|", "_")
-      if "Green" in aa:
-        fn = open("team/earth/"+change+".json")
-        setteamm = json.load(fn)
-      
-      elif "Blue" in aa:
+      if "Blue" in listToStr:
         fn = open("team/water/"+change+".json")
         setteamm = json.load(fn)
+      
+      elif "Green" in listToStr:
+        fn = open("team/earth/"+change+".json")
+        setteamm = json.load(fn)
 
-      elif "Red" in aa:
+      elif "Red" in listToStr:
         fn = open("team/fire/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Black" in aa:
+      elif "Black" in listToStr:
         fn = open("team/death/"+change+".json")
         setteamm = json.load(fn)
       
-      elif "White" in aa:
+      elif "White" in listToStr:
         fn = open("team/life/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Gold" in aa:
+      elif "Gold" in listToStr:
         fn = open("team/dragon/"+change+".json")
         setteamm = json.load(fn)
 
 
-      return setteamm  
+      return setteamm
 
+  
+  setteam = rule()
 
 
 ####################################################   
       
-  if str(l['mana_cap']) == str(l['mana_cap']):
+  if str(resp['mana_cap']) == str(resp['mana_cap']):
     try:
-      team = (setteam[str(l['mana_cap'])])
+      team = (setteam[str(resp['mana_cap'])])
       send()
+      time.sleep(2)
+      main()
     except:
       print("cant submit team")
       print("Reconnecting.....")
-      time.sleep(1)
       os.system("python3 dm.py")
       main()
    
