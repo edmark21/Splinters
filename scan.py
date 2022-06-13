@@ -203,7 +203,7 @@ def checker():
     '''
     print(opt)
     quest = input("[+] Select [1-2]: ")
-    if quests == "1":
+    if quest == "1":
       
       os.system("python3 main.py")
     else:
