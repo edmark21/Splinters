@@ -9,19 +9,20 @@ import bs4
 import requests
 import json
 import os, sys, time
+from beem import Hive
 
 
 
 
 def r():
-  '''
+  
   def broadcast_sm_advance_league(hive: Hive, user: str, notify: str):
     request = {"notify": "false"}
 
     trx: dict = hive.custom_json("sm_advance_league", json_data=request,
                                  required_posting_auths=[user])
     return trx["trx_id"]
-  '''
+  
   
   f = open('core/acc.txt')
   n = f.readlines()
@@ -97,8 +98,8 @@ def r():
         print("[+] Rank: Bronze 1")
 
       elif usr['league'] == 4:
-        #hive = Hive(keys=[posting])
-        #transaction_id = broadcast_sm_advance_league(hive, user, "false")
+        hive = Hive(keys=[posting])
+        transaction_id = broadcast_sm_advance_league(hive, user, "false")
         print("[+] Rank: Silver 3")
 
       elif usr['league'] == 5:
@@ -108,8 +109,8 @@ def r():
         print("[+] Rank: Silver 1")
 
       elif usr['league'] == 7:
-        #hive = Hive(keys=[posting])
-        #transaction_id = broadcast_sm_advance_league(hive, user, "false")
+        hive = Hive(keys=[posting])
+        transaction_id = broadcast_sm_advance_league(hive, user, "false")
         print("[+] Rank: Gold 3")
 
       elif usr['league'] == 8:
