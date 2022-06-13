@@ -148,7 +148,7 @@ def checker():
   al = open('core/allcards.json')
   ali = json.load(al)
 
-  f = open('team/core/checker.txt')
+  f = open('core/checker.txt')
   cards = f.readlines()
 
   mycards = open('core/cards_collection.json')
@@ -343,7 +343,7 @@ def menu():
     rb = "https://pastebin.com/raw/bef1fFeN"
     response = requests.get(rb)
     a = response.text
-    f = open('team/earth/standard.json','w')
+    f = open('team/earth/Standard.json','w')
     f.write(a.strip())
     f.close()
 
