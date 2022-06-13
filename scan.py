@@ -194,7 +194,20 @@ def checker():
   except:
     print("[+] All cards rented")
     scan()
-    os.system("python3 main.py")
+    opt = '''
+        Select Quests below to start
+
+      [1] earth
+      [2] water
+      
+    '''
+    print(opt)
+    quest = input("[+] Select [1-2]: ")
+    if quests == "1":
+      
+      os.system("python3 main.py")
+    else:
+      os.system("python3 water.py")
   
 
             
