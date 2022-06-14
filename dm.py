@@ -1,6 +1,6 @@
-'''
-version 1 release
-2:17 PM 6/6/2022
+  '''
+version 2 release
+7:08 am 15/06/2022
 
 '''
 
@@ -21,6 +21,7 @@ from result import *
 
 import os.path
 from os import path
+from urllib.request import urlopen
 
 
 
@@ -73,13 +74,13 @@ def main():
         pila = len(ecr)
         if pila == 4:
           ecr_int = int(ecr[0]+ecr[1])
-          print("\n[+] " + str(ecr_int) + "% ECR")
+          print("\n[+] " + str(uname) + " " + str(ecr_int) + "% ECR")
           if ecr_int < int(ecr_nako):
             print("[+] ECR Limit Detected")
             exit()
 
         elif pila == 3:
-          print("[+] " + str(ecr[0])+"% ECR")
+          print("\n[+] " + str(uname) + " " + str(ecr[0])+"% ECR")
 
   r_e()
   def broadcast_submit_team(hive: Hive, user: str, trx_id: str, team: List[str], secret: str,on_chain: bool):
@@ -221,7 +222,7 @@ def main():
 
 
   def bat():
-    print("\n[+] Match Found")
+    print("[+] Match Found")
     a = ["Red", "White", "Blue", "Green", "Black", "Gold"]
     b = resp['inactive'].split(',')
     b = [ x for x in a if not x in b ] 
@@ -242,28 +243,48 @@ def main():
   def rule():
     if resp['ruleset'] == resp['ruleset']:
       change = resp['ruleset'].replace("|", "_")
-      if "Blue" in listToStr:
-        fn = open("team/water/"+change+".json")
+
+      for qst in quest_info:
+      
+        if qst['name'] == "lyanna":
+          print("[+] Earth Quest Detetced.")
+          e_t = "earth"
+          c_t = "Green"
+
+        elif qst['name'] == "pirate":
+          print("[+] Water Quest Detetced.")
+          e_t = "water"
+          c_t = "Blue"
+
+        else:
+          print('[!] only earth and water quest')
+          exit()
+
+      
+      
+    #
+      if c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
       
-      elif "Green" in listToStr:
-        fn = open("team/earth/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Red" in listToStr:
-        fn = open("team/fire/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Black" in listToStr:
-        fn = open("team/death/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
       
-      elif "White" in listToStr:
-        fn = open("team/life/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Gold" in listToStr:
-        fn = open("team/dragon/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
 
