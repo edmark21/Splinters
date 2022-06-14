@@ -21,6 +21,7 @@ from result import *
 
 import os.path
 from os import path
+from urllib.request import urlopen
 
 
 
@@ -73,13 +74,13 @@ def main():
         pila = len(ecr)
         if pila == 4:
           ecr_int = int(ecr[0]+ecr[1])
-          print("\n[+] " + str(ecr_int) + "% ECR")
+          print("\n[+] " + str(uname) + " " + str(ecr_int) + "% ECR")
           if ecr_int < int(ecr_nako):
             print("[+] ECR Limit Detected")
             exit()
 
         elif pila == 3:
-          print("[+] " + str(ecr[0])+"% ECR")
+          print("[+] " + str(uname) + " " + str(ecr[0])+"% ECR")
 
   r_e()
 
@@ -191,6 +192,10 @@ def main():
 
     user = mao
     hive = Hive(keys=[mao2])
+
+    quest_url = "https://api.splinterlands.io/players/quests?username="+user
+    quest_url_response = urlopen(quest_url)
+    quest_info = json.loads(quest_url_response.read())
 
     
 
@@ -306,28 +311,48 @@ def main():
   def rule():
     if resp['ruleset'] == resp['ruleset']:
       change = resp['ruleset'].replace("|", "_")
-      if "Green" in listToStr:
-        fn = open("team/earth/"+change+".json")
+
+      for qst in quest_info:
+      
+        if qst['name'] == "lyanna":
+          print("[+] Earth Quest Detetced.")
+          e_t = "earth"
+          c_t = "Green"
+
+        elif qst['name'] == "pirate":
+          print("[+] Water Quest Detetced.")
+          e_t = "water"
+          c_t = "Blue"
+
+        else:
+          print('[!] only earth and water quest')
+          exit()
+
+      
+      
+    #
+      if c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
       
-      elif "Blue" in listToStr:
-        fn = open("team/water/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Red" in listToStr:
-        fn = open("team/fire/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Black" in listToStr:
-        fn = open("team/death/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
       
-      elif "White" in listToStr:
-        fn = open("team/life/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
-      elif "Gold" in listToStr:
-        fn = open("team/dragon/"+change+".json")
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
 
 
