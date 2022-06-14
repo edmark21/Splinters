@@ -80,7 +80,7 @@ def main():
             exit()
 
         elif pila == 3:
-          print("[+] " + str(uname) + " " + str(ecr[0])+"% ECR")
+          print("\n[+] " + str(uname) + " " + str(ecr[0])+"% ECR")
 
   r_e()
 
@@ -201,7 +201,7 @@ def main():
 
     
     transaction_id = broadcast_find_match(hive, user, "Ranked", False)
-    print("\n\n[*] Starting ")
+    print("[*] Starting ")
     resp = get_battle_status(transaction_id)
 
 
@@ -290,7 +290,7 @@ def main():
 
 
   def bat():
-    print("\n[+] Match Found")
+    print("[+] Match Found")
     a = ["Red", "White", "Blue", "Green", "Black", "Gold"]
     b = resp['inactive'].split(',')
     b = [ x for x in a if not x in b ] 
