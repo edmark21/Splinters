@@ -19,6 +19,7 @@ import importlib.util, requests
 import requests, zipfile, io
 import os, sys, time
 import zipfile
+from urllib.request import urlopen
 
 
 
@@ -44,6 +45,10 @@ try:
   url = "https://api2.splinterlands.com/cards/collection/"+mao
   response = requests.get(url)
   a = response.text
+
+  quest_url = "https://api.splinterlands.io/players/quests?username="+username
+  quest_url_response = urlopen(quest_url)
+  quest_info = json.loads(quest_url_response.read())
 
   f = open('core/cards_collection.json','w')
 
@@ -194,20 +199,22 @@ def checker():
   except:
     print("[+] All cards rented")
     scan()
-    opt = '''
-        Select Quests below to start
 
-      [1] earth
-      [2] water
+    for qst in quest_info:
       
-    '''
-    print(opt)
-    quest = input("[+] Select [1-2]: ")
-    if quest == "1":
-      
-      os.system("python3 main.py")
-    else:
-      os.system("python3 water.py")
+      if qst['name'] == "lyanna":
+        print("[+] Earth Quest Detetced.")
+        time.sleep(1)
+        os.system("python3 main.py")
+
+      elif qst['name'] == "pirate":
+        print("[+] Water Quest Detetced.")
+        time.sleep(1)
+        os.system("python3 water.py")
+
+      else:
+        print('[!] only earth and water quest')
+        exit()
   
 
             
