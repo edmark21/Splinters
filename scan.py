@@ -200,21 +200,7 @@ def checker():
     print("[+] All cards rented")
     scan()
 
-    for qst in quest_info:
-      
-      if qst['name'] == "lyanna":
-        print("[+] Earth Quest Detetced.")
-        time.sleep(1)
-        os.system("python3 main.py")
-
-      elif qst['name'] == "pirate":
-        print("[+] Water Quest Detetced.")
-        time.sleep(1)
-        os.system("python3 water.py")
-
-      else:
-        print('[!] only earth and water quest')
-        exit()
+    os.system('python3 main.py')
   
 
             
