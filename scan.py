@@ -1,36 +1,29 @@
 '''
-scan
+battle resultt
+1:30 PM 6/12/2022
 
-
-update time
-12:05 PM 6/6/2022
 '''
 
-import os, sys
 
-
-import hashlib
+import bs4
+import requests
 import json
-import re, sys
-import sys
-import fileinput
-
-import importlib.util, requests
-import requests, zipfile, io
 import os, sys, time
-import zipfile
-from urllib.request import urlopen
-
-
-
-os.system("clear")
+from beem import Hive
 
 
 
 
+def r():
+  
+  def broadcast_sm_advance_league(hive: Hive, user: str, notify: str):
+    request = {"notify": "false"}
 
-
-try:
+    trx: dict = hive.custom_json("sm_advance_league", json_data=request,
+                                 required_posting_auths=[user])
+    return trx["trx_id"]
+  
+  
   f = open('core/acc.txt')
   n = f.readlines()
 
@@ -40,343 +33,169 @@ try:
   res = " " in name
 
   mao = name.split()[0]
-  username = mao
+  mao2 = name.split()[1]
+
+  user = mao
+  posting = mao2
+
   
-  url = "https://api2.splinterlands.com/cards/collection/"+mao
-  response = requests.get(url)
+
+  rb = "https://api.splinterlands.io/players/balances?username="+user
+  response = requests.get(rb)
   a = response.text
-
-  quest_url = "https://api.splinterlands.io/players/quests?username="+username
-  quest_url_response = urlopen(quest_url)
-  quest_info = json.loads(quest_url_response.read())
-
-  f = open('core/cards_collection.json','w')
-
-  f.write(a)
+  f = open('core/balances.json','w')
+  f.write(a.strip())
   f.close()
-except:
-  print("[!] Please login first in core/acc.txt")  
-
-
-
-
-
-
-
-
-###################################################
-cards = open('core/allcards.json')
-c = json.load(cards)
-
-def scan():
-  path = "team"
-  co = os.listdir(path)
-  pf = "team/"
-  print("[+] Please wait...")
-  allc = open('core/cards_collection.json')
-  l = json.load(allc)
-  total = 1
-
-
-  
-  for i in l['cards']:
-    ids = i['card_detail_id']
-    uids = i['uid']
-    for a in c:
-      if ids == a['id']:
-        #print(ids, uids, a['name'].replace(" ", "_").lower())
-        old = a['name'].replace(" ", "_").lower() #name
-        new = uids #uid
-
-        for content in co:
-          #sulod sa team folder
-          sulod = os.listdir(pf+content)
-          total = 1
-
-          for content_folder in sulod:
-            counter = 0
-            #sulod sa mga folder sa team
-
-            with open(pf + content + "/" +content_folder, "r", encoding="utf-8") as file:
-              result = file.read()
-              counter  = result.count(old)
-              result = result.replace(old, new)
-
-            with open(pf + content + "/" + content_folder, "w", encoding="utf-8") as newfile:
-              newfile.write(result)
-
-  print("\n[+] Fullname to Uid replaced, Success.")
   
 
-########################################################        
-def manual():
-  cards = open('core/allcards.json')
-  l = json.load(cards)
-  
-  c = int(input("\nEnter card Id: "))
   
   
-  for i in l:
-    if i['id'] == c:
-      name = i['name'].replace(" ", "_").lower()
-      print(i['id'], name)
-
-  manual()
-           
-
-#################################################### 
-def checker():
   try:
-    f = open('core/acc.txt')
-    n = f.readlines()
+    
+    btsu = "https://steemmonsters.com/battle/history?player="+mao
+    link = "https://steemmonsters.com/players/details?name="+mao
+    e = requests.get(link).json()
+    ee = int(e['capture_rate'])
+    bt = requests.get(btsu)
+    bts = bt.json()
+    bh = bts['battles']
+
+    balance = open('core/balances.json')
+    bl = json.load(balance)
+
+    earn_dec = str(bh[0]['reward_dec'])
+
+    
+   
+    if bl[1]['token'] == "DEC":
+      total_dec = str(bl[1]['balance'])
+      
+    elif bl[2]['token'] == "DEC":
+      total_dec = str(bl[2]['balance'])
+      
+    elif bl[3]['token'] == "DEC":
+      total_dec = str(bl[3]['balance'])
 
 
-    name = n[0]
-
-    res = " " in name
-
-    mao = name.split()[0]
-    username = mao
-  
-    url = "https://api2.splinterlands.com/cards/collection/"+mao
-    response = requests.get(url)
-    a = response.text
-
-    f = open('core/cards_collection.json','w')
-
-    f.write(a)
-    f.close()
-  except:
-    print("[!] Please login first in core/acc.txt")  
+    def ranks():
+      ranku = "https://api.splinterlands.io/players/details?name="+user
 
 
-  al = open('core/allcards.json')
-  ali = json.load(al)
+      ra = (ranku)
+      usr = requests.get(ra).json()
 
-  f = open('core/checker.txt')
-  cards = f.readlines()
+      rating_dre = usr['rating']
+      power_dre = usr['collection_power']
 
-  mycards = open('core/cards_collection.json')
-  mc = json.load(mycards)
-
+      
 
 
+      if usr['league'] == 0:
+        print("[+] Rank: novice")
 
-  ca = []
+      elif usr['league'] == 1:
+        print("[+] Rank: Bronze 3")
 
-  for i in cards:
-    a = int(i.strip())
-    b = ca.append(a)
+      elif usr['league'] == 2:
+        print("[+] Rank: Bronze 2")
 
+      elif usr['league'] == 3:
+        print("[+] Rank: Bronze 1")
 
+      elif usr['league'] == 4:
+        print("[+] Rank: Silver 3")
+        if rating_dre >= 1000:
+          if power_dre >= 15000:
+            try:
+              
+              hive = Hive(keys=[posting])
+              transaction_id = broadcast_sm_advance_league(hive, user, "false")
+              
+            except:
+              e_m = "no rc"
 
+      elif usr['league'] == 5:
+        print("[+] Rank: Silver 2")
 
-  csl = []
-  for i in mc['cards']:
-    c = i['card_detail_id']
-    a = csl.append(c)
+      elif usr['league'] == 6:
+        print("[+] Rank: Silver 1")
+
+      elif usr['league'] == 7:
+        print("[+] Rank: Gold 3")
+        if rating_dre >= 1900:
+          if power_dre >= 100000:
+            try:
+              
+              hive = Hive(keys=[posting])
+              transaction_id = broadcast_sm_advance_league(hive, user, "false")
+              
+            except:
+              e_m = "no rc"
+
+      elif usr['league'] == 8:
+        print("[+] Rank: Gold 2")
+
+      elif usr['league'] == 9:
+        print("[+] Rank: Gold 1")
+
+      elif usr['league'] > 10:
+        print("[+] Rank: Diamond above")
     
 
 
 
-
-  bb = [ x for x in ca if not x in csl ]
-  listToStr = ' '.join([str(elem) for elem in bb])
-
-
-  with open('core/cards.txt', 'w') as myfile:
-    for i in bb:
-      for h in ali:
-        if h['id'] == i:
-          name = h['name'].replace(" ", "_").lower()
-          print(h['id'], name, h['name'])
-          myfile.write(str(h['id']) + '\n')
+    
+    if mao == bh[0]['player_1']:
+      
+      if mao == bh[0]['winner']:
+        print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
+        ranks()
+        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
         
-
-  try:
-    if h['id']:
-      print("[!] Not all cards rented")
-  except:
-    print("[+] All cards rented")
-    scan()
-
-    os.system('python3 main.py')
-  
-
-            
-    
-#####################################################
-def scan3():
-  path = "team"
-  co = os.listdir(path)
-  pf = "team/"
-  print("Please wait...")
-  f = open('core/acc.txt')
-  n = f.readlines()
-  name = n[0]
-  res = " " in name
-  mao = name.split()[0]
-  allc = open('core/cards_collection.json')
-  l = json.load(allc)
-  total = 1
-
-
-  
-  for i in l['cards']:
-    cn = "https://api.splinterlands.io/cards/find?ids=" + i['uid']
-    u = (cn)
-    c = requests.get(u).json()
-    for ca in c:
-      name = ca['details']['name']
-      new = name.replace(" ", "_").lower()
-      old = i['uid']
-
-      for content in co:
-        #sulod sa team folder
-        sulod = os.listdir(pf+content)
-        total = 1
-
-        for content_folder in sulod:
           
-          counter = 0
-          #sulod sa mga folder sa team
-
-
-          with open(pf + content + "/" +content_folder, "r", encoding="utf-8") as file:
-            result = file.read()
-            counter  = result.count(old)
-            result = result.replace(old, new)
+        
+        
+        
+        
+        
+       
+      else:
+        
+        print("[x] You Lose")
+        ranks()
+        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
+        
+        
       
-          with open(pf + content + "/" + content_folder, "w", encoding="utf-8") as newfile:
-            newfile.write(result)
-      
-          if counter:
-            total+=1
+          
 
-###################################################            
-def cards():
-  os.system('clear')
-  f = open('core/acc.txt')
-  n = f.readlines()
-  name = n[0]
-  res = " " in name
-  mao = name.split()[0]
-  allc = open('core/cards_collection.json')
-  l = json.load(allc)
-  count = 0
-  for i in l['cards']:
-    cn = "https://api.splinterlands.io/cards/find?ids=" + i['uid']
-    u = (cn)
-    c = requests.get(u).json()
-    for ca in c:
-      name = ca['details']['name']
-      
-      count += 1
-      print(count, name + " = " + i['uid'])
+    else:
+      if mao == bh[0]['player_2']:
+        
+        if mao == bh[0]['winner']:
+          print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
+          ranks()
+          print("[+] Rating:", bh[0]['player_2_rating_final'], "ECR:", ee)
+          
+          
+          
+        
+             
+        else:
+          
+          print("[x] You Lose", "Rating:")
+          ranks()
+          print("[+] Rating", bh[0]['player_2_rating_final'], "ECR:", ee)
+          
 
-
-      
-def zp():
-  dl = input("Do you want to doqnload the Team file? [y/n]: ")
-  if dl == "y" or dl == "Y" or dl == "yes" or dl == "YES" or dl == "Yes":
-    download = "17pRHW6I25PaVwFTpSLX20UzL0KjOwlwQ"
-    print("Downloading Please wait...")
-    r = requests.get("https://drive.google.com/uc?id=" + download + "&export=download")
-    z = zipfile.ZipFile(io.BytesIO(r.content))
-    z.extractall()
-    menu()
-
-  else:
-    print("ready to go")  
-
-def menu():
-  os.system('clear')
-  logo = '''
-
-
-  ======================================
-  [         SPLINTERS AUTO SCAN        ]
-  [          Develop by: Edmark        ]
-  [                                    ]
-  ======================================
-
-            Welcome: ''' + username + '''
-
-'''
-  print(logo)
-  
-  checker()
-
-  lo = '''
-\n-----------------------------------------
-  [1] Start  
-  [2] Id info
-  [3] Check cards
-  [4] Apply RB
-  [5] Check if Cards rented
-  [6] Extract team.zip
-  [7] Exit
--------------------------------------------\n
-
-  '''
-  
-  print(lo)
-  
-
-  option = input("[>] Select Option: ")
-
-  if option == "1":
-    scan()
-    input("Press Enter to Exit...")
-    menu()
-
-  elif option == "2":
-    os.system('clear')
-    manual()
-    input("Press Enter to Continue")
-    
-    menu()
     
 
-  elif option == "3":
-    cards()
-    input("\n\nScan Complete..Press Enter to continue...")
-    menu()
 
-  elif option == "4":
     
-    print("[*] Applying rating booster.....")
-    rb = "https://pastebin.com/raw/bef1fFeN"
-    response = requests.get(rb)
-    a = response.text
-    f = open('team/earth/Standard.json','w')
-    f.write(a.strip())
-    f.close()
-
-    print("Rating booster apply success...")
-    time.sleep(3)
-    menu()
-
-  elif option == "5":
-    checker()
-    menu()
-  
-
-  elif option == "6":
-    try:
-      with zipfile.ZipFile("team.zip","r") as zip_ref:
-        zip_ref.extractall()
-
-    except:
-      print("[!] team.zip is not exist in the file.")
-
-  elif option == "7":
-    print("Thank you for using this Bot.")
-    exit()
-
-
-
-
-
-menu()
-
+        
+        
+                 
+  except:
+    print("[!] The public api is down.")
+    print("[*] Time: ", temp)
+    
