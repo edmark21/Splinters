@@ -334,28 +334,7 @@ def main():
       if c_t in listToStr:
         fn = open("team/"+e_t+"/"+change+".json")
         setteamm = json.load(fn)
-      
-      elif c_t in listToStr:
-        fn = open("team/"+e_t+"/"+change+".json")
-        setteamm = json.load(fn)
-
-      elif c_t in listToStr:
-        fn = open("team/"+e_t+"/"+change+".json")
-        setteamm = json.load(fn)
-
-      elif c_t in listToStr:
-        fn = open("team/"+e_t+"/"+change+".json")
-        setteamm = json.load(fn)
-      
-      elif c_t in listToStr:
-        fn = open("team/"+e_t+"/"+change+".json")
-        setteamm = json.load(fn)
-
-      elif c_t in listToStr:
-        fn = open("team/"+e_t+"/"+change+".json")
-        setteamm = json.load(fn)
-
-
+        
       return setteamm
 
   
