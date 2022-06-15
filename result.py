@@ -1,6 +1,6 @@
 '''
 battle resultt
-1:30 PM 6/12/2022
+1:51 am 16/06/2022
 
 '''
 
@@ -104,15 +104,18 @@ def r():
 
       elif usr['league'] == 4:
         print("[+] Rank: Silver 3")
-        if rating_dre >= 1000:
-          if power_dre >= 15000:
-            try:
+        if rating_dre > 1000:
+          if power_dre > 15000:
+            for i in range(1001, 1040):
+              if rating_dre == i:
+                
+                try:
               
-              hive = Hive(keys=[posting])
-              transaction_id = broadcast_sm_advance_league(hive, user, "false")
+                  hive = Hive(keys=[posting])
+                  transaction_id = broadcast_sm_advance_league(hive, user, "false")
               
-            except:
-              e_m = "no rc"
+                except:
+                  e_m = "no rc"
 
       elif usr['league'] == 5:
         print("[+] Rank: Silver 2")
@@ -122,15 +125,18 @@ def r():
 
       elif usr['league'] == 7:
         print("[+] Rank: Gold 3")
-        if rating_dre >= 1000:
-          if power_dre >= 15000:
-            try:
+        if rating_dre > 1900:
+          if power_dre > 100000:
+            for i in range(1901, 1941):
+              if rating_dre == i:
+                
+                try:
               
-              hive = Hive(keys=[posting])
-              transaction_id = broadcast_sm_advance_league(hive, user, "false")
+                  hive = Hive(keys=[posting])
+                  transaction_id = broadcast_sm_advance_league(hive, user, "false")
               
-            except:
-              e_m = "no rc"
+                except:
+                  e_m = "no rc"
 
       elif usr['league'] == 8:
         print("[+] Rank: Gold 2")
