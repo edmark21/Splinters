@@ -84,6 +84,11 @@ def r():
       ra = (ranku)
       usr = requests.get(ra).json()
 
+      rating_dre = usr['rating']
+      power_dre = usr['collection_power']
+
+      
+
 
       if usr['league'] == 0:
         print("[+] Rank: novice")
@@ -98,9 +103,16 @@ def r():
         print("[+] Rank: Bronze 1")
 
       elif usr['league'] == 4:
-        #hive = Hive(keys=[posting])
-        #transaction_id = broadcast_sm_advance_league(hive, user, "false")
         print("[+] Rank: Silver 3")
+        if rating_dre >= 1000:
+          if power_dre >= 15000:
+            try:
+              
+              hive = Hive(keys=[posting])
+              transaction_id = broadcast_sm_advance_league(hive, user, "false")
+              
+            except:
+              e_m = "no rc"
 
       elif usr['league'] == 5:
         print("[+] Rank: Silver 2")
@@ -109,9 +121,16 @@ def r():
         print("[+] Rank: Silver 1")
 
       elif usr['league'] == 7:
-        #hive = Hive(keys=[posting])
-        #transaction_id = broadcast_sm_advance_league(hive, user, "false")
         print("[+] Rank: Gold 3")
+        if rating_dre >= 1000:
+          if power_dre >= 15000:
+            try:
+              
+              hive = Hive(keys=[posting])
+              transaction_id = broadcast_sm_advance_league(hive, user, "false")
+              
+            except:
+              e_m = "no rc"
 
       elif usr['league'] == 8:
         print("[+] Rank: Gold 2")
@@ -132,6 +151,8 @@ def r():
         print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
         ranks()
         print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
+        
+          
         
         
         
