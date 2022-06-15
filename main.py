@@ -1,207 +1,382 @@
 '''
-battle resultt
-1:51 am 16/06/2022
+version 2 release
+2:17 PM 6/6/2022
 
 '''
 
 
+
+import hashlib
 import bs4
-import requests
-import json
-import os, sys, time
+import json, requests
+import string
+import time
+
+
+from secrets import choice
+from typing import List
+import os, sys
 from beem import Hive
+from result import *
+
+import os.path
+from os import path
+from urllib.request import urlopen
 
 
 
+os.system('clear')
 
-def r():
+
+check = path.exists('team')
+
+if check == True:
+  print()
+else:
+  print("[!] Pls download team folder first")
+  input("\nPress enter to exit..")
+  exit()
   
-  def broadcast_sm_advance_league(hive: Hive, user: str, notify: str):
-    request = {"notify": "false"}
 
-    trx: dict = hive.custom_json("sm_advance_league", json_data=request,
+API2 = "https://api2.splinterlands.com"
+BASE_BATTLE = "https://battle.splinterlands.com"
+
+f = open('core/acc.txt')
+n = f.readlines()
+
+
+name = n[0]
+
+uname = name.split()[0]
+ecr_nako = name.split()[4]
+rating_nako = name.split()[5]
+
+def main():
+  def r_e():
+    
+    #####rating
+    url_r = "https://api.splinterlands.io/players/details?name="+uname
+    uri = requests.get(url_r).json()
+    m_rating = uri['rating']
+
+    ######ecr
+    url_e = "https://api.splinterlands.io/players/balances?username="+uname
+    result_e = requests.get(url_e).json()
+
+
+    if int(m_rating) > int(rating_nako):
+      input("[+] Rating limit detected.")
+      exit()
+
+    for i in result_e:
+      if i['token'] == "ECR":
+        ecr = str(i['balance'])
+        pila = len(ecr)
+        if pila == 4:
+          ecr_int = int(ecr[0]+ecr[1])
+          print("\n[+] " + str(uname) + " " + str(ecr_int) + "% ECR")
+          if ecr_int < int(ecr_nako):
+            print("[+] ECR Limit Detected")
+            exit()
+
+        elif pila == 3:
+          print("\n[+] " + str(uname) + " " + str(ecr[0])+"% ECR")
+
+  r_e()
+
+  
+  def broadcast_find_match(hive: Hive, user: str, match_type: str, on_chain: bool):
+    hive = hive if on_chain else copy_hive(hive, user)
+
+    trx_id = None
+    trx: dict = hive.custom_json("sm_find_match", json_data={"match_type": match_type},
                                  required_posting_auths=[user])
-    return trx["trx_id"]
+    if not on_chain:
+        trx = post_battle_transaction(trx)
+        if trx["success"]:
+            trx_id = trx["id"]
+    else:
+        trx_id = trx["trx_id"]
+
+    return trx_id
+
+
+  def broadcast_submit_team(hive: Hive, user: str, trx_id: str, team: List[str], secret: str,on_chain: bool):
+    hive = hive if on_chain else copy_hive(hive, user)
+
+    hash = generate_team_hash(team[0], team[1:], secret)
+
+    request = {"trx_id": trx_id, "team_hash": hash}
+    trx: dict = hive.custom_json("sm_submit_team", json_data=request,
+                                 required_posting_auths=[user])
+    trx_id = None
+    if not on_chain:
+        trx = post_battle_transaction(trx)
+        if trx["success"]:
+            trx_id = trx["id"]
+    else:
+        trx_id = trx["trx_id"]
+
+    return trx_id, hash
+
+
+  def broadcast_reveal_team(hive: Hive, user: str, team: List[str], secret: str, trx_id, hash, on_chain: bool):
+    hive = hive if on_chain else copy_hive(hive, user)
+
+    request = {"trx_id": trx_id, "team_hash": hash, "summoner": team[0], "monsters": team[1:],
+               "secret": secret}
+    trx: dict = hive.custom_json("sm_team_reveal", json_data=request,
+                                 required_posting_auths=[user])
+
+    trx_id = None
+    if not on_chain:
+        trx = post_battle_transaction(trx)
+        if trx["success"]:
+            trx_id = trx["id"]
+    else:
+        trx_id = trx["trx_id"]
+
+    return trx_id
+
+
+  def generate_secret(length=10):
+    return ''.join(choice(string.ascii_letters + string.digits) for i in range(length))
+
+
+  def generate_team_hash(summoner, monsters, secret):
+    m = hashlib.md5()
+    m.update((summoner + ',' + ','.join(monsters) + ',' + secret).encode("utf-8"))
+    team_hash = m.hexdigest()
+    return team_hash
+
+
+  def get_battle_status(battle_id: str):
+    url: str = API2 + "/battle/status?id=" + battle_id
+    return requests.get(url).json()
+
+
+  def get_battle_result(battle_id: str):
+    url: str = API2 + "/battle/result?id=" + battle_id
+    return requests.get(url).json()
+
+
+  def copy_hive(hive: Hive, user: str):
+    private_key = hive.wallet.getPostingKeyForAccount(user)
+    return Hive(nobroadcast=True, keys=[private_key])
+
+
+  
+  def post_battle_transaction(trx: dict):
+    url: str = BASE_BATTLE + "/battle/battle_tx"
+    trx: str = json.dumps(trx)
+    return requests.post(url, data={"signed_tx": trx}).json()
+
+
   
   
-  f = open('core/acc.txt')
-  n = f.readlines()
 
 
-  name = n[0]
+  try:
+    f = open('core/acc.txt')
+    n = f.readlines()
 
-  res = " " in name
 
-  mao = name.split()[0]
-  mao2 = name.split()[1]
+    name = n[0]
 
-  user = mao
-  posting = mao2
+    res = " " in name
+
+    mao = name.split()[0]
+    mao2 = name.split()[1]
+    
+ 
+
+    user = mao
+    hive = Hive(keys=[mao2])
+
+    quest_url = "https://api.splinterlands.io/players/quests?username="+user
+    quest_url_response = urlopen(quest_url)
+    quest_info = json.loads(quest_url_response.read())
+
+    
+
+    
+    transaction_id = broadcast_find_match(hive, user, "Ranked", False)
+    print("[*] Starting ")
+    resp = get_battle_status(transaction_id)
+
 
   
-
-  rb = "https://api.splinterlands.io/players/balances?username="+user
-  response = requests.get(rb)
-  a = response.text
-  f = open('core/balances.json','w')
-  f.write(a.strip())
-  f.close()
-  
+  except:
+    print("[!] Incorrect account...")
+    print("[*] Troubleshooting......\n")
+    time.sleep(1)
+    main()
 
   
+  
+  dm = "https://api2.splinterlands.com/players/outstanding_match?username="+user
+
+
+  detect = requests.get(dm).json()
+
+  
+  balik = 1
+  print("[*] Finding Match")
   
   try:
-    
-    btsu = "https://steemmonsters.com/battle/history?player="+mao
-    link = "https://steemmonsters.com/players/details?name="+mao
-    e = requests.get(link).json()
-    ee = int(e['capture_rate'])
-    bt = requests.get(btsu)
-    bts = bt.json()
-    bh = bts['battles']
-
-    balance = open('core/balances.json')
-    bl = json.load(balance)
-
-    earn_dec = str(bh[0]['reward_dec'])
-
-    
-   
-    if bl[1]['token'] == "DEC":
-      total_dec = str(bl[1]['balance'])
-      
-    elif bl[2]['token'] == "DEC":
-      total_dec = str(bl[2]['balance'])
-      
-    elif bl[3]['token'] == "DEC":
-      total_dec = str(bl[3]['balance'])
-
-
-    def ranks():
-      ranku = "https://api.splinterlands.io/players/details?name="+user
-
-
-      ra = (ranku)
-      usr = requests.get(ra).json()
-
-      rating_dre = usr['rating']
-      power_dre = usr['collection_power']
+    while type(resp) == str or type(resp) == dict and not resp["opponent_player"]:
+      resp = get_battle_status(transaction_id)
+      time.sleep(2)
+      balik += 1
 
       
+      if balik == 8:
+        
+        print("[?] Reloading")
+        if detect['match_type'] == "Ranked":
+          os.system('python3 dm.py')
+          #os.system('clear')
+        time.sleep(5)
+        main()
 
-
-      if usr['league'] == 0:
-        print("[+] Rank: novice")
-
-      elif usr['league'] == 1:
-        print("[+] Rank: Bronze 3")
-
-      elif usr['league'] == 2:
-        print("[+] Rank: Bronze 2")
-
-      elif usr['league'] == 3:
-        print("[+] Rank: Bronze 1")
-
-      elif usr['league'] == 4:
-        print("[+] Rank: Silver 3")
-        if rating_dre > 1000:
-          if power_dre > 15000:
-            for i in range(1001, 1040):
-              if rating_dre == i:
-                
-                try:
-              
-                  hive = Hive(keys=[posting])
-                  transaction_id = broadcast_sm_advance_league(hive, user, "false")
-              
-                except:
-                  e_m = "no rc"
-
-      elif usr['league'] == 5:
-        print("[+] Rank: Silver 2")
-
-      elif usr['league'] == 6:
-        print("[+] Rank: Silver 1")
-
-      elif usr['league'] == 7:
-        print("[+] Rank: Gold 3")
-        if rating_dre > 1900:
-          if power_dre > 100000:
-            for i in range(1901, 1941):
-              if rating_dre == i:
-                
-                try:
-              
-                  hive = Hive(keys=[posting])
-                  transaction_id = broadcast_sm_advance_league(hive, user, "false")
-              
-                except:
-                  e_m = "no rc"
-
-      elif usr['league'] == 8:
-        print("[+] Rank: Gold 2")
-
-      elif usr['league'] == 9:
-        print("[+] Rank: Gold 1")
-
-      elif usr['league'] > 10:
-        print("[+] Rank: Diamond above")
-    
-
-
-
-    
-    if mao == bh[0]['player_1']:
       
-      if mao == bh[0]['winner']:
-        print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
-        ranks()
-        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
-        
-          
-        
-        
-        
-        
-        
-       
-      else:
-        
-        print("[x] You Lose")
-        ranks()
-        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
-        
-        
-      
-          
-
-    else:
-      if mao == bh[0]['player_2']:
-        
-        if mao == bh[0]['winner']:
-          print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
-          ranks()
-          print("[+] Rating:", bh[0]['player_2_rating_final'], "ECR:", ee)
-          
-          
-          
-        
-             
-        else:
-          
-          print("[x] You Lose", "Rating:")
-          ranks()
-          print("[+] Rating", bh[0]['player_2_rating_final'], "ECR:", ee)
-          
-
-    
-
-
-    
-        
-        
-                 
   except:
-    print("[!] The public api is down.")
-    print("[*] Time: ", temp)
+    print("[..] Refreshing")
+    time.sleep(6)
+    os.system('python3 dm.py')
+    main()
     
+    
+  
+    
+  def send():
+
+
+    secret = generate_secret()
+    trx_id, team_hash = broadcast_submit_team(hive, user,  transaction_id, team, secret, False)
+
+    broadcast_reveal_team(hive, user, team, secret, transaction_id, team_hash, False)
+
+    secret = gensecret = generate_secret()
+    trx_id, team_hash = broadcast_submit_team(hive, user, transaction_id, team, secret, False)
+    
+    bat()
+    '''
+    allcards = open("core/allcards.json")
+    ac = json.load(allcards) 
+    
+    total = 0
+    for i in team:
+      
+      t = i.split('-')
+      ids = int(t[1])
+      for a in ac:
+        if a['id'] == ids:
+          m = a['stats']['mana']
+
+          if type(m) == list:
+            print("[=>]", m[0], i, "=>", a['name'])
+            total += m[0]
+          else:
+            print("[=>]", m, i, "=>", a['name'])
+            total += m
+    print("[=>]", total, "=> Total")
+    '''
+    print("[+] Team Submited")
+    r()
+
+
+
+
+
+  def bat():
+    print("[+] Match Found")
+    a = ["Red", "White", "Blue", "Green", "Black", "Gold"]
+    b = resp['inactive'].split(',')
+    b = [ x for x in a if not x in b ] 
+    listToStr = ' '.join([str(elem) for elem in b])
+    print("[?]", "["+listToStr+"]")
+    print("[>] " + resp['player'] + " vs " + resp['opponent_player'] + "\n" + "[>] Manacap: " + str(resp['mana_cap']) + "\n[>] Ruleset: " + resp['ruleset'] + "\n")
+
+
+
+
+  a = ["Red", "White", "Blue", "Green", "Black", "Gold"]
+  b = resp['inactive'].split(',')
+  b = [ x for x in a if not x in b ] 
+  listToStr = ' '.join([str(elem) for elem in b])
+################[single]############
+#################[all rules]##########################      
+
+  def rule():
+    if resp['ruleset'] == resp['ruleset']:
+      change = resp['ruleset'].replace("|", "_")
+
+      for qst in quest_info:
+      
+        if qst['name'] == "lyanna":
+          print("[+] Earth Quest Detetced.")
+          e_t = "earth"
+          c_t = "Green"
+
+        elif qst['name'] == "pirate":
+          print("[+] Water Quest Detetced.")
+          e_t = "water"
+          c_t = "Blue"
+
+        else:
+          print('[!] only earth and water quest')
+          exit()
+
+      
+      
+    #
+      if c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
+        setteamm = json.load(fn)
+      
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
+        setteamm = json.load(fn)
+
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
+        setteamm = json.load(fn)
+
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
+        setteamm = json.load(fn)
+      
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
+        setteamm = json.load(fn)
+
+      elif c_t in listToStr:
+        fn = open("team/"+e_t+"/"+change+".json")
+        setteamm = json.load(fn)
+
+
+      return setteamm
+
+  
+  setteam = rule()
+
+
+####################################################   
+      
+  if str(resp['mana_cap']) == str(resp['mana_cap']):
+    try:
+      team = (setteam[str(resp['mana_cap'])])
+      send()
+      time.sleep(2)
+      main()
+    except:
+      print("cant submit team")
+      print("Reconnecting.....")
+      os.system("python3 dm.py")
+      main()
+   
+
+    
+main()
+  
