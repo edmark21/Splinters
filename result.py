@@ -16,12 +16,7 @@ from beem import Hive
 
 def r():
   
-  def broadcast_sm_advance_league(hive: Hive, user: str, notify: str):
-    request = {"notify": "false"}
-
-    trx: dict = hive.custom_json("sm_advance_league", json_data=request,
-                                 required_posting_auths=[user])
-    return trx["trx_id"]
+  
   
   
   f = open('core/acc.txt')
@@ -101,42 +96,92 @@ def r():
 
       elif usr['league'] == 3:
         print("[+] Rank: Bronze 1")
-
-      elif usr['league'] == 4:
-        print("[+] Rank: Silver 3")
+        
+        print(rating_dre, power_dre)
         if rating_dre > 1000:
+
           if power_dre > 15000:
-            for i in range(1001, 1040):
+
+
+            for i in range(1001, 1030):
               if rating_dre == i:
                 
                 try:
-              
-                  hive = Hive(keys=[posting])
-                  transaction_id = broadcast_sm_advance_league(hive, user, "false")
+ 
+                  def broadcast_sm_advance_league(hive: Hive, u: str, notify: str):
+                    request = {"notify": "false"}
+
+                    trx: dict = hive.custom_json("sm_advance_league", json_data=request,
+                                                     required_posting_auths=[user])
+                    return trx["trx_id"]
+
+                  fa = open('core/acc.txt')
+                  na = fa.readlines()
+
+                  namea = n[0]
+
+                  maoa = namea.split()[0]
+                  mao2a = namea.split()[1]
+
+                  u = maoa
+                  p = mao2a
+                      
+                  hive = Hive(keys=[p])
+                  transaction_id = broadcast_sm_advance_league(hive, u, "false")
+                  print("[+] Auto Advance Complete")
               
                 except:
-                  e_m = "no rc"
+                    er = "error"
+                      
+      elif usr['league'] == 4:
+        print("[+] Rank: Silver 3")
+
+              
 
       elif usr['league'] == 5:
         print("[+] Rank: Silver 2")
 
       elif usr['league'] == 6:
         print("[+] Rank: Silver 1")
-
-      elif usr['league'] == 7:
-        print("[+] Rank: Gold 3")
+        print(rating_dre, power_dre)
         if rating_dre > 1900:
+
           if power_dre > 100000:
-            for i in range(1901, 1941):
+
+
+            for i in range(1901, 1930):
               if rating_dre == i:
                 
                 try:
-              
-                  hive = Hive(keys=[posting])
-                  transaction_id = broadcast_sm_advance_league(hive, user, "false")
+ 
+                  def broadcast_sm_advance_league(hive: Hive, u: str, notify: str):
+                    request = {"notify": "false"}
+
+                    trx: dict = hive.custom_json("sm_advance_league", json_data=request,
+                                                     required_posting_auths=[user])
+                    return trx["trx_id"]
+
+                  fa = open('core/acc.txt')
+                  na = fa.readlines()
+
+                  namea = n[0]
+
+                  maoa = namea.split()[0]
+                  mao2a = namea.split()[1]
+
+                  u = maoa
+                  p = mao2a
+                      
+                  hive = Hive(keys=[p])
+                  transaction_id = broadcast_sm_advance_league(hive, u, "false")
+                  print("[+] Auto Advance Complete")
               
                 except:
-                  e_m = "no rc"
+                    er = "error"
+
+      elif usr['league'] == 7:
+        print("[+] Rank: Gold 3")
+
 
       elif usr['league'] == 8:
         print("[+] Rank: Gold 2")
