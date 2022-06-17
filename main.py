@@ -234,7 +234,7 @@ def main():
         
         print("[?] Reloading")
         if detect['match_type'] == "Ranked":
-          os.system('python dm.py')
+          os.system('python3 dm.py')
           #os.system('clear')
         time.sleep(5)
         main()
@@ -243,7 +243,7 @@ def main():
   except:
     print("[..] Refreshing")
     time.sleep(6)
-    os.system('python dm.py')
+    os.system('python3 dm.py')
     main()
     
     
@@ -353,7 +353,7 @@ def main():
     except:
       print("cant submit team")
       print("Reconnecting.....")
-      os.system("python dm.py")
+      os.system("python3 dm.py")
       main()
    
 
