@@ -221,11 +221,14 @@ def checker():
   try:
     if h['id']:
       print("[!] Not all cards rented")
+      if h['id'] == 450:
+        print("[+] na rent na tanan kay wala namany ni gawas na listahan.")
+        scan()
+
+        os.system('python3 main.py')
   except:
     print("[+] All cards rented")
     scan()
-
-    os.system('python3 main.py')
   
 
             
