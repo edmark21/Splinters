@@ -25,9 +25,14 @@ from urllib.request import urlopen
 
 
 
-os.system('clear')
 
 
+if os.name == 'nt':
+  clear = os.system('cls')
+else:
+  clear = os.system('clear')
+
+clear  
 check = path.exists('team')
 
 if check == True:
