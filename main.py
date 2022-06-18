@@ -1,6 +1,6 @@
 '''
 version 2 release
-2:17 PM 6/6/2022
+2:31 PM 6/18/2022
 
 '''
 
@@ -326,7 +326,10 @@ def main():
 
         else:
           print('[!] only earth and water quest')
-          exit()
+          print("[!] Bypassing the quest parameter.")
+          print("[+] Activating Rating Booster mode")
+          e_t = "earth"
+          c_t = "Green"
 
       
       
