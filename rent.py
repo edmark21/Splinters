@@ -5,12 +5,16 @@ rent
 '''
 
 
-import requests, os
+import requests, os, sys
 from beem import Hive
 
 
-os.system('mode con: cols=44 lines=23')
-os.system('clear')
+if os.name == 'nt':
+  clear = os.system('cls')
+else:
+  clear = os.system('clear')
+
+clear 
 import os,sys, requests, json, time
 
 c_l = open('core/cards.txt')
