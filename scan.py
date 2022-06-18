@@ -3,7 +3,7 @@ scan
 
 
 update time
-4:26 am 16/06/2022
+2:34 PM 6/18/2022
 '''
 
 import os, sys
@@ -199,7 +199,15 @@ def checker():
 
     else:
       print('[!] only earth and water quest')
-      exit()
+      pr = input("[?] Proceed to menu? [y/n]: ")
+      if pr == "y":
+        menu()
+      elif pr == "n":
+        exit()
+      else:
+        print("[!] Invalid Command")
+        time.sleep(2)
+        checker()
       
   with open('core/cards.txt', 'w') as myfile:
     for i in bb:
@@ -333,7 +341,7 @@ def menu():
 '''
   print(logo)
   
-  checker()
+  
 
   lo = '''
 \n-----------------------------------------
@@ -405,6 +413,6 @@ def menu():
 
 
 
-
+checker()
 menu()
 
