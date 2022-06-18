@@ -1,6 +1,6 @@
 '''
 version 2 release
-7:08 am 15/06/2022
+2:32 PM 6/18/2022
 
 '''
 
@@ -25,7 +25,7 @@ from urllib.request import urlopen
 
 
 
-os.system('clear')
+os.system('cls')
 
 
 check = path.exists('team')
@@ -164,6 +164,9 @@ def main():
   mao2 = name.split()[1]
   user = mao
   hive = Hive(keys=mao2)
+
+  
+  
   try:
     api = "https://api2.splinterlands.com/players/outstanding_match?username=" + user
     d = requests.get(api).json()
@@ -241,9 +244,14 @@ def main():
 #################[all rules]##########################      
 
   def rule():
+    
+    quest_url = "https://api.splinterlands.io/players/quests?username="+user
+    quest_url_response = urlopen(quest_url)
+    quest_info = json.loads(quest_url_response.read())
+    
     if resp['ruleset'] == resp['ruleset']:
       change = resp['ruleset'].replace("|", "_")
-
+      
       for qst in quest_info:
       
         if qst['name'] == "lyanna":
@@ -258,7 +266,10 @@ def main():
 
         else:
           print('[!] only earth and water quest')
-          exit()
+          print("[!] Bypassing the quest parameter.")
+          print("[+] Activating Rating Booster mode")
+          e_t = "earth"
+          c_t = "Green"
 
       
       
