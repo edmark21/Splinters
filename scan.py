@@ -23,7 +23,12 @@ from urllib.request import urlopen
 
 
 
-os.system("clear")
+if os.name == 'nt':
+  clear = os.system('cls')
+else:
+  clear = os.system('clear')
+
+clear 
 
 
 
@@ -291,7 +296,7 @@ def scan3():
 
 ###################################################            
 def cards():
-  os.system('clear')
+  clear
   f = open('core/acc.txt')
   n = f.readlines()
   name = n[0]
@@ -326,7 +331,7 @@ def zp():
     print("ready to go")  
 
 def menu():
-  os.system('clear')
+  clear
   logo = '''
 
 
@@ -367,7 +372,7 @@ def menu():
     menu()
 
   elif option == "2":
-    os.system('clear')
+    clear
     manual()
     input("Press Enter to Continue")
     
