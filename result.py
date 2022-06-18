@@ -1,6 +1,6 @@
 '''
 battle resultt
-1:51 am 16/06/2022
+2:33 PM 6/18/2022
 
 '''
 
@@ -97,7 +97,7 @@ def r():
       elif usr['league'] == 3:
         print("[+] Rank: Bronze 1")
         
-        
+        print(rating_dre, power_dre)
         if rating_dre > 1000:
 
           if power_dre > 15000:
@@ -143,7 +143,7 @@ def r():
 
       elif usr['league'] == 6:
         print("[+] Rank: Silver 1")
-        
+        print(rating_dre, power_dre)
         if rating_dre > 1900:
 
           if power_dre > 100000:
@@ -201,7 +201,7 @@ def r():
       if mao == bh[0]['winner']:
         print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
         ranks()
-        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
+        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee, "Rshare:", bh[0]['rshares'])
         
           
         
@@ -214,7 +214,7 @@ def r():
         
         print("[x] You Lose")
         ranks()
-        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee)
+        print("[+] Rating:", bh[0]['player_1_rating_final'], "ECR:", ee, "Rshare:", bh[0]['rshares'])
         
         
       
@@ -226,7 +226,7 @@ def r():
         if mao == bh[0]['winner']:
           print("[+] Winner:", bh[0]['winner'], "DEC:", "+" + earn_dec + "/" + total_dec)
           ranks()
-          print("[+] Rating:", bh[0]['player_2_rating_final'], "ECR:", ee)
+          print("[+] Rating:", bh[0]['player_2_rating_final'], "ECR:", ee, "Rshare:", bh[0]['rshares'])
           
           
           
@@ -236,7 +236,7 @@ def r():
           
           print("[x] You Lose", "Rating:")
           ranks()
-          print("[+] Rating", bh[0]['player_2_rating_final'], "ECR:", ee)
+          print("[+] Rating", bh[0]['player_2_rating_final'], "ECR:", ee, "Rshare:", bh[0]['rshares'])
           
 
     
