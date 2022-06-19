@@ -34,17 +34,13 @@ clear
 
 
 
-
 try:
-  f = open('core/acc.txt')
-  n = f.readlines()
+
+  file1 = open('core/acc.txt', 'r')
+  l = file1.readlines()
 
 
-  name = n[0]
-
-  res = " " in name
-
-  mao = name.split()[0]
+  mao = l[1].strip()
   username = mao
   
   url = "https://api2.splinterlands.com/cards/collection/"+mao
@@ -132,18 +128,15 @@ def manual():
 #################################################### 
 def checker():
   try:
-    f = open('core/acc.txt')
-    n = f.readlines()
+
+    file1 = open('core/acc.txt', 'r')
+    l = file1.readlines()
 
 
-    name = n[0]
-
-    res = " " in name
-
-    mao = name.split()[0]
-    username = mao
+    uname = l[1].strip()
+    username = uname
   
-    url = "https://api2.splinterlands.com/cards/collection/"+mao
+    url = "https://api2.splinterlands.com/cards/collection/"+username
     response = requests.get(url)
     a = response.text
 
@@ -193,12 +186,12 @@ def checker():
 
   for qst in quest_info:
     if qst['name'] == "lyanna":
-      print("[+] Earth Quest Detetced.")
+      print("[+] Earth Quest Detetced.\n")
       e_t = "earth"
       c_t = "Green"
 
     elif qst['name'] == "pirate":
-      print("[+] Water Quest Detetced.")
+      print("[+] Water Quest Detetced.\n")
       e_t = "water"
       c_t = "Blue"
 
@@ -213,32 +206,35 @@ def checker():
         print("[!] Invalid Command")
         time.sleep(2)
         checker()
-      
+  c = 0    
   with open('core/cards.txt', 'w') as myfile:
     for i in bb:
+      
       for h in ali:
+        
         if h['id'] == i:
+          
           name = h['name'].replace(" ", "_").lower()
           if h['color'] == "Gray":
-            print(h['id'], name, h['name'])
-            myfile.write(str(h['id']) + '\n')
-          elif h['color'] == c_t:
+            c += 1
             print(h['id'], name, h['name'])
             myfile.write(str(h['id']) + '\n')
             
-          
+          elif h['color'] == c_t:
+            c += 1
+            print(h['id'], name, h['name'])
+            myfile.write(str(h['id']) + '\n')
+            
+    print(f"\n[+] {c} Total Cards.")
+                   
           
           
         
 
   try:
     if h['id']:
-      print("[!] Not all cards rented")
-      if h['id'] == 450:
-        print("[+] na rent na tanan kay wala namany ni gawas na listahan.")
-        scan()
-
-        os.system('python3 main.py')
+      print("\n[!] Not all cards rented")
+      
   except:
     print("[+] All cards rented")
     scan()
@@ -252,11 +248,12 @@ def scan3():
   co = os.listdir(path)
   pf = "team/"
   print("Please wait...")
-  f = open('core/acc.txt')
-  n = f.readlines()
-  name = n[0]
-  res = " " in name
-  mao = name.split()[0]
+
+  file1 = open('core/acc.txt', 'r')
+  l = file1.readlines()
+
+  mao = l[1].strip()
+
   allc = open('core/cards_collection.json')
   l = json.load(allc)
   total = 1
@@ -297,11 +294,12 @@ def scan3():
 ###################################################            
 def cards():
   clear
-  f = open('core/acc.txt')
-  n = f.readlines()
-  name = n[0]
-  res = " " in name
-  mao = name.split()[0]
+
+  file1 = open('core/acc.txt', 'r')
+  l = file1.readlines()
+
+  mao = l[1].strip()
+  
   allc = open('core/cards_collection.json')
   l = json.load(allc)
   count = 0
@@ -407,6 +405,8 @@ def menu():
     try:
       with zipfile.ZipFile("team.zip","r") as zip_ref:
         zip_ref.extractall()
+        print("Ectract Complete.")
+        menu()
 
     except:
       print("[!] team.zip is not exist in the file.")
