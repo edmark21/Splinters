@@ -97,7 +97,7 @@ def r():
       elif usr['league'] == 3:
         print("[+] Rank: Bronze 1")
         
-        print(rating_dre, power_dre)
+        
         if rating_dre > 1000:
 
           if power_dre > 15000:
@@ -143,7 +143,7 @@ def r():
 
       elif usr['league'] == 6:
         print("[+] Rank: Silver 1")
-        print(rating_dre, power_dre)
+        
         if rating_dre > 1900:
 
           if power_dre > 100000:
