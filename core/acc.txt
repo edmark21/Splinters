@@ -1,1 +1,0 @@
-user posting_key active_key DEC_CREDITS ECR_LIMIT RATING_LIMIT
