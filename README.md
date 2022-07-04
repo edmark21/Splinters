@@ -44,9 +44,8 @@ python3 scan.py
 440
 1
 234
-'''
 
-'''bash
+
 python3 rent.py
 ```
 
