@@ -39,8 +39,8 @@ python3 scan.py
 #### select 4 , Apply RB and hit enter and w8 for a few seconds to complete
 
 ##### Card Renting manual or auto base on core/cards.txt in short put all the f*cking card id's that u want to rent
-#### Example
 ```bash
+#### Example
 440
 1
 234
@@ -48,10 +48,10 @@ python3 scan.py
 
 '''bash
 python3 rent.py
-'''
+```
 
 #### Step to use this bot
-'''bash
+```bash
 step 1) edit your account in core/acc.txt
 step 2) unzip team.zip
 step 3) execute scan.py
@@ -59,7 +59,7 @@ step 4) rent the cards base on the quest. python3 rent.py
 and select auto
 the bot automatically detects your quest and automatically giving you a specific cards to be rented
 step 4) if your all done in renting it will automatically run the python3 main.py
-'''
+```
 
 
 
