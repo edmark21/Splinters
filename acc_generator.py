@@ -52,17 +52,16 @@ def logo():
 def main():
     logo()
     n = input("Enter Username: ")
+    ecr = input("Enter Ecr Limit: ")
+    rating = input("Enter Rating Limit: ")
+    rshare = input("Enter Rshare Limit: ")
     for i in a['accounts']:
         if n == i['account_name']:
             print("User:", n)
             print("Posting:", i['priv_posting_key'])
             print("Active:", i['priv_active_key'])
 
-    ecr = input("Enter Ecr Limit: ")
-    rating = input("Enter Rating Limit: ")
-    rshare = input("Enter Rshare Limit: ")
-
-    config = f'''#################### USERNAME ###################################
+            config = f'''#################### USERNAME ###################################
 {n}
 #################### POSTING_KEY ##############################
 {i['priv_posting_key']}
@@ -80,6 +79,10 @@ DEC
 FALSE
 ###############################################################
 '''
+
+    
+
+    
     f = open('core/acc.txt', 'w')
     f.write(config)
     f.close
