@@ -1,5 +1,0 @@
-beem
-colorama
-requests
-unzip
-bs4
