@@ -1,3 +1,4 @@
+![Screenshot](spl.png)
 # Splinterlands Custom Team Bot👋 
 ![Screenshot](image.png)
 
