@@ -1,4 +1,5 @@
 # Splinterlands Custom Team Bot👋 
+![Screenshot](Screenshot_20210811-180225_1.png)
 
 ## Installation 
 
