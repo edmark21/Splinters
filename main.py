@@ -167,6 +167,8 @@ def main():
   
     bb = [ x for x in ca if not x in csl ]
     listToStr = ' '.join([str(elem) for elem in bb])
+    
+    ##add some quest
 
     try:
       for qst in quest_info:
