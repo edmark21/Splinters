@@ -212,75 +212,8 @@ def checker():
   bb = [ x for x in ca if not x in csl ]
   listToStr = ' '.join([str(elem) for elem in bb])
 
-  for qst in quest_info:
-    if qst['name'] == "lyanna":
-      print("[+] Earth Quest Detetced.\n")
-      e_t = "earth"
-      c_t = "Green"
-
-    elif qst['name'] == "pirate":
-      print("[+] Water Quest Detetced.\n")
-      e_t = "water"
-      c_t = "Blue"
-
-    else:
-      print('[!] only earth and water quest')
-      pr = input("[?] Proceed to menu? [y/n]: ")
-      if pr == "y":
-        menu()
-      elif pr == "n":
-        exit()
-      else:
-        print("[!] Invalid Command")
-        time.sleep(2)
-        checker()
-  c = 0    
-  with open('core/cards.txt', 'w') as myfile:
-    for i in bb:
-      
-      for h in ali:
-        
-        if h['id'] == i:
-          
-          name = h['name'].replace(" ", "_").lower()
-          if h['color'] == "Gray":
-            c += 1
-            print(style.MAGENTA,h['id'], name, h['name'], style.RESET)
-            myfile.write(str(h['id']) + '\n')
-            
-          elif h['color'] == c_t:
-            c += 1
-            print(style.GREEN, h['id'], name, h['name'], style.RESET)
-            myfile.write(str(h['id']) + '\n')
-            
-    print(f"\n[+] {c} Total Cards.")
-    
-    if c == 0:
-      print("[+] Running")
-      time.sleep(1)
-      if os.name == 'nt':
-        clear = os.system('cls')
-        scan()
-        os.system('python main.py')
-      else:
-        clear = os.system('clear')
-        scan()
-        os.system('python3 main.py')
-                  
-          
-          
-        
-
-  try:
-    if h['id']:
-      print("\n[!] Not all cards rented")
-      
-  except:
-    print("[+] All cards rented")
-    scan()
   
-
-            
+     
     
 #####################################################
 def scan3():
